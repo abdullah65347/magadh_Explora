@@ -1,0 +1,678 @@
+export type Language = 'en' | 'hi' | 'zh' | 'ja';
+
+export const translations = {
+  en: {
+    // Navigation
+    nav: {
+      home: "Home",
+      packages: "Packages",
+      customize: "Customize",
+      specialTours: "Special Tours",
+      jainTours: "Jain Pilgrimage",
+      buddhistTours: "Buddhist Circuit",
+      destinations: "Destinations",
+      blog: "Blog",
+      contact: "Contact",
+      bookNow: "Book Now",
+      getQuote: "Get Quote",
+    },
+    // Hero Section
+    hero: {
+      badge: "Discover Ancient Bihar",
+      title: "Journey Through the Land of",
+      titleHighlight: "Enlightenment",
+      subtitle: "Experience the sacred grounds where Buddha attained enlightenment, explore ancient universities, and discover the rich heritage of Magadh Empire",
+      explorePackages: "Explore Packages",
+      customTrip: "Plan Custom Trip",
+      stats: {
+        destinations: "Destinations",
+        happyTravelers: "Happy Travelers",
+        yearsExperience: "Years Experience",
+      },
+    },
+    // Packages Section
+    packages: {
+      badge: "Curated Experiences",
+      title: "Popular Travel Packages",
+      subtitle: "Choose from our carefully crafted travel experiences designed to immerse you in Bihar's rich cultural heritage",
+      viewAll: "View All Packages",
+      startingFrom: "Starting from",
+      perPerson: "per person",
+      days: "Days",
+      people: "people",
+      view: "View",
+      essential: "Essential",
+      deluxe: "Deluxe",
+      premium: "Premium",
+      essentialDesc: "Budget-friendly exploration",
+      deluxeDesc: "Comfort & convenience",
+      premiumDesc: "Luxury experience",
+    },
+    // Package Tiers
+    tiers: {
+      essential: {
+        name: "Essential",
+        tagline: "Budget-Friendly",
+        features: ["2-3 Star Hotels", "AC Transport", "Breakfast Included", "English Guide"],
+      },
+      deluxe: {
+        name: "Deluxe",
+        tagline: "Comfort & Style",
+        features: ["4 Star Hotels", "Premium Vehicle", "All Meals", "Multilingual Guide", "Activities Included"],
+      },
+      premium: {
+        name: "Premium",
+        tagline: "Luxury Experience",
+        features: ["5 Star Hotels", "Luxury SUV/Tempo", "Gourmet Dining", "Private Guide", "VIP Access", "Spa & Wellness"],
+      },
+    },
+    // Destinations
+    destinations: {
+      badge: "Sacred Places",
+      title: "Popular Destinations",
+      subtitle: "Explore the most revered and historically significant sites in Bihar",
+      exploreAll: "Explore All Destinations",
+    },
+    // Features
+    features: {
+      badge: "Why Choose Us",
+      title: "Experience Excellence",
+      subtitle: "We combine local expertise with world-class service to create unforgettable travel experiences",
+      expertGuides: "Expert Guides",
+      expertGuidesDesc: "Multilingual guides with deep knowledge of Bihar's history",
+      customizable: "Fully Customizable",
+      customizableDesc: "Tailor your journey to match your preferences",
+      premiumStays: "Premium Stays",
+      premiumStaysDesc: "Handpicked hotels from budget to luxury",
+      support: "24/7 Support",
+      supportDesc: "Round-the-clock assistance throughout your journey",
+    },
+    // Testimonials
+    testimonials: {
+      badge: "Traveler Stories",
+      title: "What Our Guests Say",
+      subtitle: "Read authentic experiences from travelers who explored Bihar with us",
+    },
+    // CTA Section
+    cta: {
+      title: "Ready to Explore Bihar?",
+      subtitle: "Start planning your spiritual journey today. Our travel experts are here to help you create the perfect itinerary.",
+      startPlanning: "Start Planning",
+      talkToExpert: "Talk to Expert",
+    },
+    // Quote Form
+    quote: {
+      title: "Get Your Free Quote",
+      subtitle: "Tell us about your dream trip and we'll create a personalized itinerary",
+      name: "Full Name",
+      email: "Email Address",
+      phone: "Phone Number",
+      country: "Country",
+      travelerType: "Traveler Type",
+      packageTier: "Package Tier",
+      destinations: "Preferred Destinations",
+      travelDates: "Preferred Travel Dates",
+      groupSize: "Group Size",
+      budget: "Budget Range",
+      requirements: "Special Requirements",
+      submit: "Submit Inquiry",
+      submitting: "Submitting...",
+      success: "Thank you! We'll contact you within 24 hours.",
+      travelerTypes: {
+        solo: "Solo Traveler",
+        couple: "Couple",
+        family: "Family",
+        school: "School/College Group",
+        corporate: "Corporate/Team",
+      },
+      budgetRanges: {
+        budget: "₹10,000 - ₹25,000",
+        mid: "₹25,000 - ₹50,000",
+        premium: "₹50,000 - ₹1,00,000",
+        luxury: "₹1,00,000+",
+      },
+    },
+    // Blog
+    blog: {
+      badge: "Travel Stories",
+      title: "Explore Bihar Through Stories",
+      subtitle: "Discover the history, culture, and hidden gems of Bihar through our curated articles",
+      readMore: "Read More",
+      minRead: "min read",
+      categories: {
+        all: "All",
+        history: "History",
+        spirituality: "Spirituality",
+        culture: "Culture",
+        travel: "Travel Tips",
+        food: "Food & Cuisine",
+      },
+    },
+    // Footer
+    footer: {
+      tagline: "Discover the ancient land of enlightenment",
+      quickLinks: "Quick Links",
+      specialTours: "Special Tours",
+      contactUs: "Contact Us",
+      newsletter: "Newsletter",
+      newsletterText: "Subscribe for travel tips and exclusive offers",
+      subscribe: "Subscribe",
+      emailPlaceholder: "Enter your email",
+      rights: "All rights reserved",
+    },
+    // Common
+    common: {
+      loading: "Loading...",
+      error: "Something went wrong",
+      tryAgain: "Try Again",
+      close: "Close",
+      selectLanguage: "Select Language",
+    },
+  },
+  hi: {
+    // Navigation
+    nav: {
+      home: "होम",
+      packages: "पैकेज",
+      customize: "कस्टमाइज़",
+      specialTours: "विशेष टूर",
+      jainTours: "जैन तीर्थयात्रा",
+      buddhistTours: "बौद्ध सर्किट",
+      destinations: "गंतव्य",
+      blog: "ब्लॉग",
+      contact: "संपर्क",
+      bookNow: "अभी बुक करें",
+      getQuote: "कोटेशन प्राप्त करें",
+    },
+    // Hero Section
+    hero: {
+      badge: "प्राचीन बिहार की खोज करें",
+      title: "की भूमि की यात्रा",
+      titleHighlight: "ज्ञान प्राप्ति",
+      subtitle: "उस पवित्र भूमि का अनुभव करें जहां बुद्ध ने ज्ञान प्राप्त किया, प्राचीन विश्वविद्यालयों का अन्वेषण करें और मगध साम्राज्य की समृद्ध विरासत की खोज करें",
+      explorePackages: "पैकेज देखें",
+      customTrip: "कस्टम ट्रिप प्लान करें",
+      stats: {
+        destinations: "गंतव्य",
+        happyTravelers: "खुश यात्री",
+        yearsExperience: "वर्षों का अनुभव",
+      },
+    },
+    // Packages Section
+    packages: {
+      badge: "क्यूरेटेड अनुभव",
+      title: "लोकप्रिय यात्रा पैकेज",
+      subtitle: "बिहार की समृद्ध सांस्कृतिक विरासत में डुबोने के लिए तैयार किए गए हमारे यात्रा अनुभवों में से चुनें",
+      viewAll: "सभी पैकेज देखें",
+      startingFrom: "शुरू",
+      perPerson: "प्रति व्यक्ति",
+      days: "दिन",
+      people: "लोग",
+      view: "देखें",
+      essential: "एसेंशियल",
+      deluxe: "डीलक्स",
+      premium: "प्रीमियम",
+      essentialDesc: "बजट-अनुकूल यात्रा",
+      deluxeDesc: "आराम और सुविधा",
+      premiumDesc: "लक्जरी अनुभव",
+    },
+    // Package Tiers
+    tiers: {
+      essential: {
+        name: "एसेंशियल",
+        tagline: "बजट-अनुकूल",
+        features: ["2-3 स्टार होटल", "एसी परिवहन", "नाश्ता शामिल", "अंग्रेजी गाइड"],
+      },
+      deluxe: {
+        name: "डीलक्स",
+        tagline: "आराम और शैली",
+        features: ["4 स्टार होटल", "प्रीमियम वाहन", "सभी भोजन", "बहुभाषी गाइड", "गतिविधियाँ शामिल"],
+      },
+      premium: {
+        name: "प्रीमियम",
+        tagline: "लक्जरी अनुभव",
+        features: ["5 स्टार होटल", "लक्जरी SUV/टेम्पो", "गॉरमेट डाइनिंग", "निजी गाइड", "VIP एक्सेस", "स्पा और वेलनेस"],
+      },
+    },
+    // Destinations
+    destinations: {
+      badge: "पवित्र स्थान",
+      title: "लोकप्रिय गंतव्य",
+      subtitle: "बिहार के सबसे पूजनीय और ऐतिहासिक रूप से महत्वपूर्ण स्थलों का अन्वेषण करें",
+      exploreAll: "सभी गंतव्य देखें",
+    },
+    // Features
+    features: {
+      badge: "हमें क्यों चुनें",
+      title: "उत्कृष्टता का अनुभव करें",
+      subtitle: "हम अविस्मरणीय यात्रा अनुभव बनाने के लिए स्थानीय विशेषज्ञता को विश्व स्तरीय सेवा के साथ जोड़ते हैं",
+      expertGuides: "विशेषज्ञ गाइड",
+      expertGuidesDesc: "बिहार के इतिहास का गहन ज्ञान रखने वाले बहुभाषी गाइड",
+      customizable: "पूरी तरह से अनुकूलन योग्य",
+      customizableDesc: "अपनी प्राथमिकताओं के अनुसार यात्रा को अनुकूलित करें",
+      premiumStays: "प्रीमियम आवास",
+      premiumStaysDesc: "बजट से लेकर लक्जरी तक चुने हुए होटल",
+      support: "24/7 सहायता",
+      supportDesc: "आपकी पूरी यात्रा में चौबीसों घंटे सहायता",
+    },
+    // Testimonials
+    testimonials: {
+      badge: "यात्री कहानियाँ",
+      title: "हमारे मेहमान क्या कहते हैं",
+      subtitle: "उन यात्रियों के वास्तविक अनुभव पढ़ें जिन्होंने हमारे साथ बिहार का अन्वेषण किया",
+    },
+    // CTA Section
+    cta: {
+      title: "बिहार का अन्वेषण करने के लिए तैयार?",
+      subtitle: "आज ही अपनी आध्यात्मिक यात्रा की योजना बनाना शुरू करें। हमारे यात्रा विशेषज्ञ आपको सही यात्रा कार्यक्रम बनाने में मदद करने के लिए यहाँ हैं।",
+      startPlanning: "प्लानिंग शुरू करें",
+      talkToExpert: "विशेषज्ञ से बात करें",
+    },
+    // Quote Form
+    quote: {
+      title: "मुफ्त कोटेशन प्राप्त करें",
+      subtitle: "हमें अपनी सपनों की यात्रा के बारे में बताएं और हम एक व्यक्तिगत यात्रा कार्यक्रम बनाएंगे",
+      name: "पूरा नाम",
+      email: "ईमेल पता",
+      phone: "फोन नंबर",
+      country: "देश",
+      travelerType: "यात्री प्रकार",
+      packageTier: "पैकेज टियर",
+      destinations: "पसंदीदा गंतव्य",
+      travelDates: "पसंदीदा यात्रा तिथियां",
+      groupSize: "समूह का आकार",
+      budget: "बजट रेंज",
+      requirements: "विशेष आवश्यकताएं",
+      submit: "पूछताछ जमा करें",
+      submitting: "जमा हो रहा है...",
+      success: "धन्यवाद! हम 24 घंटे के भीतर आपसे संपर्क करेंगे।",
+      travelerTypes: {
+        solo: "एकल यात्री",
+        couple: "जोड़ा",
+        family: "परिवार",
+        school: "स्कूल/कॉलेज समूह",
+        corporate: "कॉर्पोरेट/टीम",
+      },
+      budgetRanges: {
+        budget: "₹10,000 - ₹25,000",
+        mid: "₹25,000 - ₹50,000",
+        premium: "₹50,000 - ₹1,00,000",
+        luxury: "₹1,00,000+",
+      },
+    },
+    // Blog
+    blog: {
+      badge: "यात्रा कहानियाँ",
+      title: "कहानियों के माध्यम से बिहार का अन्वेषण करें",
+      subtitle: "हमारे क्यूरेटेड लेखों के माध्यम से बिहार के इतिहास, संस्कृति और छिपे हुए रत्नों की खोज करें",
+      readMore: "और पढ़ें",
+      minRead: "मिनट पढ़ें",
+      categories: {
+        all: "सभी",
+        history: "इतिहास",
+        spirituality: "आध्यात्मिकता",
+        culture: "संस्कृति",
+        travel: "यात्रा टिप्स",
+        food: "भोजन और व्यंजन",
+      },
+    },
+    // Footer
+    footer: {
+      tagline: "ज्ञान की प्राचीन भूमि की खोज करें",
+      quickLinks: "त्वरित लिंक",
+      specialTours: "विशेष टूर",
+      contactUs: "संपर्क करें",
+      newsletter: "न्यूज़लेटर",
+      newsletterText: "यात्रा टिप्स और विशेष ऑफ़र के लिए सब्सक्राइब करें",
+      subscribe: "सब्सक्राइब करें",
+      emailPlaceholder: "अपना ईमेल दर्ज करें",
+      rights: "सर्वाधिकार सुरक्षित",
+    },
+    // Common
+    common: {
+      loading: "लोड हो रहा है...",
+      error: "कुछ गलत हो गया",
+      tryAgain: "पुनः प्रयास करें",
+      close: "बंद करें",
+      selectLanguage: "भाषा चुनें",
+    },
+  },
+  zh: {
+    // Navigation
+    nav: {
+      home: "首页",
+      packages: "套餐",
+      customize: "定制",
+      specialTours: "特别行程",
+      jainTours: "耆那教朝圣",
+      buddhistTours: "佛教巡礼",
+      destinations: "目的地",
+      blog: "博客",
+      contact: "联系我们",
+      bookNow: "立即预订",
+      getQuote: "获取报价",
+    },
+    // Hero Section
+    hero: {
+      badge: "探索古老的比哈尔",
+      title: "穿越",
+      titleHighlight: "觉悟之地",
+      subtitle: "体验佛陀证悟的圣地，探索古老的大学，发现摩揭陀帝国的丰富遗产",
+      explorePackages: "浏览套餐",
+      customTrip: "定制行程",
+      stats: {
+        destinations: "目的地",
+        happyTravelers: "满意游客",
+        yearsExperience: "年经验",
+      },
+    },
+    // Packages Section
+    packages: {
+      badge: "精选体验",
+      title: "热门旅游套餐",
+      subtitle: "从我们精心策划的旅游体验中选择，沉浸在比哈尔丰富的文化遗产中",
+      viewAll: "查看所有套餐",
+      startingFrom: "起价",
+      perPerson: "每人",
+      days: "天",
+      people: "人",
+      view: "查看",
+      essential: "基础版",
+      deluxe: "豪华版",
+      premium: "尊享版",
+      essentialDesc: "经济实惠的探索",
+      deluxeDesc: "舒适便捷",
+      premiumDesc: "奢华体验",
+    },
+    // Package Tiers
+    tiers: {
+      essential: {
+        name: "基础版",
+        tagline: "经济实惠",
+        features: ["2-3星酒店", "空调交通", "含早餐", "英语导游"],
+      },
+      deluxe: {
+        name: "豪华版",
+        tagline: "舒适时尚",
+        features: ["4星酒店", "高级车辆", "全餐", "多语言导游", "含活动"],
+      },
+      premium: {
+        name: "尊享版",
+        tagline: "奢华体验",
+        features: ["5星酒店", "豪华SUV", "精致美食", "私人导游", "VIP通道", "水疗养生"],
+      },
+    },
+    // Destinations
+    destinations: {
+      badge: "圣地",
+      title: "热门目的地",
+      subtitle: "探索比哈尔最神圣和最具历史意义的景点",
+      exploreAll: "浏览所有目的地",
+    },
+    // Features
+    features: {
+      badge: "为什么选择我们",
+      title: "体验卓越",
+      subtitle: "我们将当地专业知识与世界级服务相结合，创造难忘的旅行体验",
+      expertGuides: "专业导游",
+      expertGuidesDesc: "深谙比哈尔历史的多语言导游",
+      customizable: "完全定制",
+      customizableDesc: "根据您的喜好量身定制行程",
+      premiumStays: "优质住宿",
+      premiumStaysDesc: "从经济型到豪华型精选酒店",
+      support: "24/7支持",
+      supportDesc: "全程提供全天候协助",
+    },
+    // Testimonials
+    testimonials: {
+      badge: "游客故事",
+      title: "客户评价",
+      subtitle: "阅读与我们一起探索比哈尔的游客的真实体验",
+    },
+    // CTA Section
+    cta: {
+      title: "准备好探索比哈尔了吗？",
+      subtitle: "今天就开始规划您的心灵之旅。我们的旅行专家随时为您打造完美行程。",
+      startPlanning: "开始规划",
+      talkToExpert: "咨询专家",
+    },
+    // Quote Form
+    quote: {
+      title: "获取免费报价",
+      subtitle: "告诉我们您的梦想之旅，我们将为您制定个性化行程",
+      name: "姓名",
+      email: "电子邮件",
+      phone: "电话号码",
+      country: "国家",
+      travelerType: "旅行者类型",
+      packageTier: "套餐等级",
+      destinations: "首选目的地",
+      travelDates: "首选旅行日期",
+      groupSize: "团队人数",
+      budget: "预算范围",
+      requirements: "特殊要求",
+      submit: "提交咨询",
+      submitting: "提交中...",
+      success: "谢谢！我们将在24小时内与您联系。",
+      travelerTypes: {
+        solo: "独自旅行",
+        couple: "情侣",
+        family: "家庭",
+        school: "学校/大学团体",
+        corporate: "企业/团队",
+      },
+      budgetRanges: {
+        budget: "₹10,000 - ₹25,000",
+        mid: "₹25,000 - ₹50,000",
+        premium: "₹50,000 - ₹1,00,000",
+        luxury: "₹1,00,000+",
+      },
+    },
+    // Blog
+    blog: {
+      badge: "旅行故事",
+      title: "通过故事探索比哈尔",
+      subtitle: "通过我们精选的文章发现比哈尔的历史、文化和隐藏的宝藏",
+      readMore: "阅读更多",
+      minRead: "分钟阅读",
+      categories: {
+        all: "全部",
+        history: "历史",
+        spirituality: "灵性",
+        culture: "文化",
+        travel: "旅行贴士",
+        food: "美食",
+      },
+    },
+    // Footer
+    footer: {
+      tagline: "探索古老的觉悟之地",
+      quickLinks: "快速链接",
+      specialTours: "特别行程",
+      contactUs: "联系我们",
+      newsletter: "通讯",
+      newsletterText: "订阅获取旅行贴士和独家优惠",
+      subscribe: "订阅",
+      emailPlaceholder: "输入您的邮箱",
+      rights: "版权所有",
+    },
+    // Common
+    common: {
+      loading: "加载中...",
+      error: "出了点问题",
+      tryAgain: "重试",
+      close: "关闭",
+      selectLanguage: "选择语言",
+    },
+  },
+  ja: {
+    // Navigation
+    nav: {
+      home: "ホーム",
+      packages: "パッケージ",
+      customize: "カスタマイズ",
+      specialTours: "特別ツアー",
+      jainTours: "ジャイナ教巡礼",
+      buddhistTours: "仏教巡礼",
+      destinations: "目的地",
+      blog: "ブログ",
+      contact: "お問い合わせ",
+      bookNow: "今すぐ予約",
+      getQuote: "見積もりを取る",
+    },
+    // Hero Section
+    hero: {
+      badge: "古代ビハールを発見",
+      title: "悟りの地への旅",
+      titleHighlight: "悟り",
+      subtitle: "ブッダが悟りを開いた聖地を体験し、古代の大学を探索し、マガダ帝国の豊かな遺産を発見してください",
+      explorePackages: "パッケージを見る",
+      customTrip: "カスタム旅行を計画",
+      stats: {
+        destinations: "目的地",
+        happyTravelers: "満足した旅行者",
+        yearsExperience: "年の経験",
+      },
+    },
+    // Packages Section
+    packages: {
+      badge: "厳選された体験",
+      title: "人気の旅行パッケージ",
+      subtitle: "ビハールの豊かな文化遺産に浸るために丁寧に作られた旅行体験からお選びください",
+      viewAll: "すべてのパッケージを見る",
+      startingFrom: "から",
+      perPerson: "1人あたり",
+      days: "日間",
+      people: "人",
+      view: "詳細",
+      essential: "エッセンシャル",
+      deluxe: "デラックス",
+      premium: "プレミアム",
+      essentialDesc: "お手頃な探索",
+      deluxeDesc: "快適さと便利さ",
+      premiumDesc: "ラグジュアリー体験",
+    },
+    // Package Tiers
+    tiers: {
+      essential: {
+        name: "エッセンシャル",
+        tagline: "お手頃価格",
+        features: ["2-3つ星ホテル", "エアコン付き交通機関", "朝食付き", "英語ガイド"],
+      },
+      deluxe: {
+        name: "デラックス",
+        tagline: "快適でスタイリッシュ",
+        features: ["4つ星ホテル", "プレミアム車両", "全食事付き", "多言語ガイド", "アクティビティ込み"],
+      },
+      premium: {
+        name: "プレミアム",
+        tagline: "ラグジュアリー体験",
+        features: ["5つ星ホテル", "高級SUV", "グルメダイニング", "プライベートガイド", "VIPアクセス", "スパ＆ウェルネス"],
+      },
+    },
+    // Destinations
+    destinations: {
+      badge: "聖地",
+      title: "人気の目的地",
+      subtitle: "ビハールで最も崇拝され、歴史的に重要な場所を探索",
+      exploreAll: "すべての目的地を見る",
+    },
+    // Features
+    features: {
+      badge: "私たちを選ぶ理由",
+      title: "卓越した体験",
+      subtitle: "地元の専門知識と世界クラスのサービスを組み合わせ、忘れられない旅行体験を創造します",
+      expertGuides: "専門ガイド",
+      expertGuidesDesc: "ビハールの歴史に精通した多言語ガイド",
+      customizable: "完全カスタマイズ可能",
+      customizableDesc: "お好みに合わせて旅程をカスタマイズ",
+      premiumStays: "プレミアムな宿泊",
+      premiumStaysDesc: "予算からラグジュアリーまで厳選されたホテル",
+      support: "24時間サポート",
+      supportDesc: "旅行中ずっと24時間体制でサポート",
+    },
+    // Testimonials
+    testimonials: {
+      badge: "旅行者の声",
+      title: "お客様の声",
+      subtitle: "私たちと一緒にビハールを探索した旅行者の本物の体験をお読みください",
+    },
+    // CTA Section
+    cta: {
+      title: "ビハール探索の準備はできましたか？",
+      subtitle: "今日から精神的な旅の計画を始めましょう。当社の旅行専門家が完璧な旅程を作るお手伝いをします。",
+      startPlanning: "計画を始める",
+      talkToExpert: "専門家に相談",
+    },
+    // Quote Form
+    quote: {
+      title: "無料見積もりを取得",
+      subtitle: "夢の旅について教えてください。パーソナライズされた旅程を作成します",
+      name: "氏名",
+      email: "メールアドレス",
+      phone: "電話番号",
+      country: "国",
+      travelerType: "旅行者タイプ",
+      packageTier: "パッケージ等級",
+      destinations: "希望の目的地",
+      travelDates: "希望の旅行日程",
+      groupSize: "グループサイズ",
+      budget: "予算範囲",
+      requirements: "特別なご要望",
+      submit: "お問い合わせを送信",
+      submitting: "送信中...",
+      success: "ありがとうございます！24時間以内にご連絡いたします。",
+      travelerTypes: {
+        solo: "一人旅",
+        couple: "カップル",
+        family: "家族",
+        school: "学校/大学グループ",
+        corporate: "企業/チーム",
+      },
+      budgetRanges: {
+        budget: "₹10,000 - ₹25,000",
+        mid: "₹25,000 - ₹50,000",
+        premium: "₹50,000 - ₹1,00,000",
+        luxury: "₹1,00,000+",
+      },
+    },
+    // Blog
+    blog: {
+      badge: "旅の物語",
+      title: "物語でビハールを探索",
+      subtitle: "厳選された記事を通じてビハールの歴史、文化、隠れた宝石を発見",
+      readMore: "続きを読む",
+      minRead: "分で読める",
+      categories: {
+        all: "すべて",
+        history: "歴史",
+        spirituality: "精神性",
+        culture: "文化",
+        travel: "旅行のヒント",
+        food: "食べ物と料理",
+      },
+    },
+    // Footer
+    footer: {
+      tagline: "悟りの古代の地を発見",
+      quickLinks: "クイックリンク",
+      specialTours: "特別ツアー",
+      contactUs: "お問い合わせ",
+      newsletter: "ニュースレター",
+      newsletterText: "旅行のヒントと限定オファーを購読",
+      subscribe: "購読",
+      emailPlaceholder: "メールアドレスを入力",
+      rights: "全著作権所有",
+    },
+    // Common
+    common: {
+      loading: "読み込み中...",
+      error: "問題が発生しました",
+      tryAgain: "再試行",
+      close: "閉じる",
+      selectLanguage: "言語を選択",
+    },
+  },
+};
+
+export type TranslationKey = typeof translations.en;
