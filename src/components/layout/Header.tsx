@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { LanguageSelector } from "@/components/LanguageSelector";
+import { MagadhExploraLogo } from "@/assets/assets";
 
 interface HeaderProps {
   onGetQuote?: () => void;
@@ -60,10 +61,14 @@ export function Header({ onGetQuote }: HeaderProps) {
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3 group">
             <div className="relative">
-              <div className="w-12 h-12 rounded-full bg-gradient-gold flex items-center justify-center shadow-medium group-hover:shadow-glow transition-all duration-300">
-                <span className="text-primary-foreground font-display font-bold text-xl">M</span>
+              <div className="w-14 h-14 rounded-full bg-white shadow-medium overflow-hidden flex items-center justify-center">
+                <img
+                  src={MagadhExploraLogo}
+                  alt="Magadh Explora Logo"
+                  className="w-11 h-11 object-contain"
+                />
               </div>
-              <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-accent rounded-full border-2 border-background" />
+              {/* <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-accent rounded-full border-2 border-background" /> */}
             </div>
             <div className="hidden sm:block">
               <h1
@@ -86,7 +91,7 @@ export function Header({ onGetQuote }: HeaderProps) {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-1">
+          <nav className="hidden xl2:flex items-center gap-1">
             {navItems.map((item) =>
               item.children ? (
                 <div
@@ -144,8 +149,8 @@ export function Header({ onGetQuote }: HeaderProps) {
                         ? "text-primary bg-primary/10"
                         : "text-primary-foreground bg-primary-foreground/20"
                       : isScrolled
-                      ? "text-foreground hover:bg-muted"
-                      : "text-primary-foreground/90 hover:text-primary-foreground hover:bg-primary-foreground/10"
+                        ? "text-foreground hover:bg-muted"
+                        : "text-primary-foreground/90 hover:text-primary-foreground hover:bg-primary-foreground/10"
                   )}
                 >
                   {item.name}
@@ -155,9 +160,8 @@ export function Header({ onGetQuote }: HeaderProps) {
           </nav>
 
           {/* CTA Buttons */}
-          <div className="hidden lg:flex items-center gap-3">
-            <LanguageSelector variant={isScrolled ? 'default' : 'transparent'} />
-            <a
+          <div className="hidden xl2:flex items-center gap-3">
+            {/* <a
               href="tel:+919876543210"
               className={cn(
                 "flex items-center gap-2 text-sm font-medium transition-colors duration-300",
@@ -166,9 +170,10 @@ export function Header({ onGetQuote }: HeaderProps) {
             >
               <Phone className="w-4 h-4" />
               <span className="hidden xl:inline">+91 98765 43210</span>
-            </a>
-            <Button 
-              variant={isScrolled ? "default" : "hero"} 
+            </a> */}
+            <LanguageSelector variant={isScrolled ? 'default' : 'transparent'} />
+            <Button
+              variant={isScrolled ? "default" : "hero"}
               size="sm"
               onClick={onGetQuote}
             >
@@ -178,7 +183,7 @@ export function Header({ onGetQuote }: HeaderProps) {
           </div>
 
           {/* Mobile Menu Toggle */}
-          <div className="lg:hidden flex items-center gap-2">
+          <div className="xl2:hidden flex items-center gap-2">
             <LanguageSelector variant={isScrolled ? 'default' : 'transparent'} />
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -203,7 +208,7 @@ export function Header({ onGetQuote }: HeaderProps) {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="lg:hidden bg-background border-t border-border"
+            className="xl2:hidden mt-2 bg-background border-t border-border"
           >
             <div className="container mx-auto px-4 py-4">
               <nav className="flex flex-col gap-2">

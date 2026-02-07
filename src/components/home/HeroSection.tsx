@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { useLanguage } from "@/i18n/LanguageContext";
 import heroImage from "@/assets/hero-nalanda.jpg";
+import { useEffect, useState } from "react";
 
 interface HeroSectionProps {
   onGetQuote?: () => void;
@@ -11,7 +12,36 @@ interface HeroSectionProps {
 
 export function HeroSection({ onGetQuote }: HeroSectionProps) {
   const { t } = useLanguage();
-  
+
+  const heroSlides = [
+    {
+      image: "/images/hero-bihar.jpg",
+      title: "Discover the\nAncient Wonders\nof Bihar",
+      subtitle: "3000 years of history, spirituality & adventure await",
+    },
+    {
+      image: "/images/bodh-gaya.jpg",
+      title: "Walk the Path\nof Enlightenment",
+      subtitle: "Explore sacred Buddhist sites across the Magadh region",
+    },
+    {
+      image: "/images/rajgir.jpg",
+      title: "Where Empires\nWere Born",
+      subtitle: "Experience the grandeur of the ancient Magadh Empire",
+    },
+  ];
+
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
+    }, 6000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const slide = heroSlides[currentSlide];
+
   const stats = [
     { icon: Star, value: "4.9", label: t.hero.stats.destinations },
     { icon: Users, value: "10K+", label: t.hero.stats.happyTravelers },
@@ -91,7 +121,7 @@ export function HeroSection({ onGetQuote }: HeroSectionProps) {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="flex flex-wrap gap-8"
+              className="flex flex-wrap gap-8 pb-4"
             >
               {stats.map((stat, index) => (
                 <div key={index} className="flex items-center gap-3">
@@ -117,7 +147,7 @@ export function HeroSection({ onGetQuote }: HeroSectionProps) {
             <div className="relative">
               <div className="absolute -top-4 -left-4 w-72 h-72 bg-primary/20 rounded-full blur-3xl" />
               <div className="absolute -bottom-4 -right-4 w-48 h-48 bg-accent/20 rounded-full blur-3xl" />
-              
+
               <div className="relative glass rounded-3xl p-6 shadow-large">
                 <div className="flex items-center justify-between mb-4">
                   <span className="px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium">
@@ -128,14 +158,14 @@ export function HeroSection({ onGetQuote }: HeroSectionProps) {
                     <span className="text-sm font-semibold text-foreground">4.9</span>
                   </div>
                 </div>
-                
+
                 <h3 className="font-display text-xl font-bold text-foreground mb-2">
                   Buddhist Circuit Premium
                 </h3>
                 <p className="text-muted-foreground text-sm mb-4">
                   7 Days • Bodh Gaya, Rajgir, Nalanda, Vaishali
                 </p>
-                
+
                 <div className="flex items-end justify-between">
                   <div>
                     <p className="text-sm text-muted-foreground">Starting from</p>
@@ -154,7 +184,7 @@ export function HeroSection({ onGetQuote }: HeroSectionProps) {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1, duration: 0.5 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden lg:block"
       >
         <div className="flex flex-col items-center gap-2">
           <span className="text-primary-foreground/60 text-sm">Scroll to explore</span>

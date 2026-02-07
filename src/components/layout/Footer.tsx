@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
-import { 
-  Facebook, 
-  Instagram, 
-  Twitter, 
-  Youtube, 
-  Mail, 
-  Phone, 
+import {
+  Facebook,
+  Instagram,
+  Twitter,
+  Youtube,
+  Mail,
+  Phone,
   MapPin,
   Heart
 } from "lucide-react";
@@ -64,8 +64,8 @@ export function Footer() {
               </div>
             </Link>
             <p className="text-primary-foreground/80 text-sm leading-relaxed mb-6">
-              Experience the spiritual and historical wonders of Bihar with our premium 
-              travel packages. From ancient Buddhist sites to Jain pilgrimage destinations, 
+              Experience the spiritual and historical wonders of Bihar with our premium
+              travel packages. From ancient Buddhist sites to Jain pilgrimage destinations,
               we craft unforgettable journeys.
             </p>
             <div className="flex gap-3">

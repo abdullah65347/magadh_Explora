@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Star, Clock, Users, Sparkles } from "lucide-react";
+import { ArrowRight, Star, Clock, Users, Sparkles, Utensils } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { cn } from "@/lib/utils";
@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 import bodhGayaImg from "@/assets/bodh-gaya.jpg";
 import rajgirImg from "@/assets/rajgir.jpg";
 import pawapuriImg from "@/assets/pawapuri.jpg";
+import nalandaImg from "@/assets/nalanda.jpg";
 
 const packages = [
   {
@@ -26,6 +27,21 @@ const packages = [
   },
   {
     id: 2,
+    title: "Blissful Bihar Package",
+    description: "Immerse yourself in authentic Bihar culture, heritage sites, and delicious local cuisine across 4-8 days",
+    image: nalandaImg,
+    duration: "6 Days",
+    groupSize: "2-20",
+    rating: 4.9,
+    reviews: 312,
+    price: 32000,
+    originalPrice: 40000,
+    tag: "Culture & Food",
+    type: "culture",
+    highlights: ["Rajgir", "Gaya", "Nalanda", "Patna"],
+  },
+  {
+    id: 3,
     title: "Jain Pilgrimage Tour",
     description: "Visit the holiest Jain tirths including Pawapuri and Kundalpur",
     image: pawapuriImg,
@@ -40,7 +56,7 @@ const packages = [
     highlights: ["Pawapuri", "Kundalpur", "Rajgir", "Vaishali"],
   },
   {
-    id: 3,
+    id: 4,
     title: "Adventure & Heritage",
     description: "Explore ancient forts, hot springs, and scenic landscapes of Bihar",
     image: rajgirImg,
@@ -99,7 +115,7 @@ export function PackagesSection() {
             Popular Travel Packages
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Choose from our carefully crafted travel experiences designed to immerse 
+            Choose from our carefully crafted travel experiences designed to immerse
             you in Bihar's rich cultural heritage
           </p>
         </motion.div>
@@ -110,7 +126,7 @@ export function PackagesSection() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 xl2:grid-cols-4 gap-6"
         >
           {packages.map((pkg) => (
             <motion.div
@@ -127,19 +143,20 @@ export function PackagesSection() {
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 to-transparent" />
-                  
+
                   {/* Tag */}
                   <span
                     className={cn(
                       "absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-semibold",
                       pkg.type === "premium" && "bg-gradient-gold text-primary-foreground",
                       pkg.type === "spiritual" && "bg-gradient-spiritual text-primary-foreground",
-                      pkg.type === "adventure" && "bg-secondary text-secondary-foreground"
+                      pkg.type === "adventure" && "bg-secondary text-secondary-foreground",
+                      pkg.type === "culture" && "bg-gradient-premium text-primary-foreground"
                     )}
                   >
                     {pkg.tag}
                   </span>
-                  
+
                   {/* Rating */}
                   <div className="absolute top-4 right-4 flex items-center gap-1 px-2 py-1 rounded-full bg-background/90 backdrop-blur-sm">
                     <Star className="w-3.5 h-3.5 text-gold fill-gold" />

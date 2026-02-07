@@ -7,9 +7,11 @@ import { PackageTiersSection } from "@/components/home/PackageTiersSection";
 import { DestinationsSection } from "@/components/home/DestinationsSection";
 import { FeaturesSection } from "@/components/home/FeaturesSection";
 import { SpecialToursSection } from "@/components/home/SpecialToursSection";
+import { DynamicPackageBuilder } from "@/components/home/DynamicPackageBuilder";
 import { TestimonialsSection } from "@/components/home/TestimonialsSection";
 import { CTASection } from "@/components/home/CTASection";
 import { QuoteModal } from "@/components/QuoteModal";
+import { ShareJourneySection } from "@/components/home/ShareJourneySection";
 
 const Index = () => {
   const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
@@ -19,11 +21,13 @@ const Index = () => {
       <Header onGetQuote={() => setIsQuoteModalOpen(true)} />
       <main>
         <HeroSection onGetQuote={() => setIsQuoteModalOpen(true)} />
-        <PackageTiersSection onGetQuote={() => setIsQuoteModalOpen(true)} />
         <PackagesSection />
+        <PackageTiersSection onGetQuote={() => setIsQuoteModalOpen(true)} />
         <DestinationsSection />
-        <FeaturesSection />
         <SpecialToursSection />
+        <ShareJourneySection />
+        <DynamicPackageBuilder />
+        <FeaturesSection />
         <TestimonialsSection />
         <CTASection onGetQuote={() => setIsQuoteModalOpen(true)} />
       </main>

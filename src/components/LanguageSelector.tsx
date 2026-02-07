@@ -15,6 +15,10 @@ const languages: { code: Language; name: string; nativeName: string; flag: strin
   { code: 'hi', name: 'Hindi', nativeName: 'हिन्दी', flag: '🇮🇳' },
   { code: 'zh', name: 'Chinese', nativeName: '中文', flag: '🇨🇳' },
   { code: 'ja', name: 'Japanese', nativeName: '日本語', flag: '🇯🇵' },
+  { code: 'th', name: 'Thai', nativeName: 'ไทย', flag: '🇹🇭' },
+  { code: 'si', name: 'Sinhala', nativeName: 'සිංහල', flag: '🇱🇰' },
+  { code: 'vi', name: 'Vietnamese', nativeName: 'Tiếng Việt', flag: '🇻🇳' },
+  { code: 'dz', name: 'Dzongkha', nativeName: 'རྫོང་ཁ', flag: '🇧🇹' },
 ];
 
 interface LanguageSelectorProps {
@@ -29,8 +33,8 @@ export function LanguageSelector({ variant = 'default', className }: LanguageSel
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button 
-          variant="ghost" 
+        <Button
+          variant="ghost"
           size="sm"
           className={cn(
             "gap-2 font-medium",

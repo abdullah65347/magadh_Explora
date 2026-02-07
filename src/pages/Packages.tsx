@@ -1,11 +1,11 @@
 import { useState, useMemo } from "react";
 import { motion } from "framer-motion";
-import { 
-  Search, 
-  Filter, 
-  Star, 
-  Clock, 
-  Users, 
+import {
+  Search,
+  Filter,
+  Star,
+  Clock,
+  Users,
   MapPin,
   ArrowRight,
   X,
@@ -43,6 +43,21 @@ const allPackages = [
   },
   {
     id: 2,
+    title: "Blissful Bihar Package",
+    description: "Immerse yourself in authentic Bihar culture, heritage sites, and delicious local cuisine across 4-8 days",
+    image: nalandaImg,
+    duration: "5 Days",
+    groupSize: "2-20",
+    rating: 4.9,
+    reviews: 312,
+    price: 32000,
+    originalPrice: 40000,
+    type: "Heritage",
+    category: "Spiritual",
+    destinations: ["Rajgir", "Gaya", "Nalanda", "Sasaram", "Patna"],
+  },
+  {
+    id: 3,
     title: "Jain Pilgrimage Tour",
     description: "Visit the holiest Jain tirths including Pawapuri Jal Mandir and Kundalpur, the birthplace of Lord Mahavira.",
     image: pawapuriImg,
@@ -57,7 +72,7 @@ const allPackages = [
     destinations: ["Pawapuri", "Kundalpur", "Rajgir", "Vaishali"],
   },
   {
-    id: 3,
+    id: 4,
     title: "Adventure & Heritage",
     description: "Explore ancient forts, natural hot springs, and scenic landscapes. Perfect for adventure seekers and history buffs.",
     image: rajgirImg,
@@ -72,7 +87,7 @@ const allPackages = [
     destinations: ["Rajgir", "Rohtasgarh", "Sasaram", "Gaya"],
   },
   {
-    id: 4,
+    id: 5,
     title: "Nalanda Scholar's Trail",
     description: "Walk through the ancient corridors of the world's first university. Perfect for history enthusiasts and academics.",
     image: nalandaImg,
@@ -87,7 +102,7 @@ const allPackages = [
     destinations: ["Nalanda", "Rajgir", "Vikramshila"],
   },
   {
-    id: 5,
+    id: 6,
     title: "Complete Bihar Explorer",
     description: "The ultimate Bihar experience covering Buddhist, Jain, and heritage sites with premium accommodations throughout.",
     image: heroImg,
@@ -102,7 +117,7 @@ const allPackages = [
     destinations: ["All Major Sites"],
   },
   {
-    id: 6,
+    id: 7,
     title: "Kesariya Stupa Expedition",
     description: "Visit the world's tallest Buddhist stupa along with other lesser-known gems of Bihar's Buddhist heritage.",
     image: kesariyaImg,
@@ -116,6 +131,21 @@ const allPackages = [
     category: "Essential",
     destinations: ["Kesariya", "Vaishali", "Patna"],
   },
+  // {
+  //   id: 8,
+  //   title: "Kesariya Stupa Expedition",
+  //   description: "Visit the world's tallest Buddhist stupa along with other lesser-known gems of Bihar's Buddhist heritage.",
+  //   image: kesariyaImg,
+  //   duration: "2 Days",
+  //   groupSize: "2-15",
+  //   rating: 4.6,
+  //   reviews: 78,
+  //   price: 15000,
+  //   originalPrice: 18000,
+  //   type: "Buddhist",
+  //   category: "Essential",
+  //   destinations: ["Kesariya", "Vaishali", "Patna"],
+  // },
 ];
 
 const types = ["All", "Buddhist", "Jain", "Heritage", "Adventure", "Mixed"];
@@ -133,10 +163,10 @@ export default function PackagesPage() {
     return allPackages.filter((pkg) => {
       const matchesSearch = pkg.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
         pkg.description.toLowerCase().includes(searchQuery.toLowerCase());
-      
+
       const matchesType = selectedType === "All" || pkg.type === selectedType;
       const matchesCategory = selectedCategory === "All" || pkg.category === selectedCategory;
-      
+
       let matchesDuration = true;
       if (selectedDuration !== "All") {
         const days = parseInt(pkg.duration);
@@ -161,7 +191,7 @@ export default function PackagesPage() {
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      
+
       {/* Hero Section */}
       <section className="pt-24 pb-12 bg-gradient-warm relative overflow-hidden">
         <div className="absolute inset-0 pattern-heritage opacity-30" />
@@ -176,7 +206,7 @@ export default function PackagesPage() {
               Explore Our Packages
             </h1>
             <p className="text-muted-foreground text-lg">
-              Find the perfect travel experience tailored to your interests, 
+              Find the perfect travel experience tailored to your interests,
               duration, and budget
             </p>
           </motion.div>
@@ -219,8 +249,8 @@ export default function PackagesPage() {
               </div>
 
               {/* More Filters Dropdown */}
-              <Button 
-                variant="outline" 
+              <Button
+                variant="outline"
                 onClick={() => setShowFilters(!showFilters)}
                 className={cn(showFilters && "bg-primary text-primary-foreground")}
               >
@@ -237,8 +267,8 @@ export default function PackagesPage() {
             </div>
 
             {/* Mobile Filter Toggle */}
-            <Button 
-              variant="outline" 
+            <Button
+              variant="outline"
               className="lg:hidden"
               onClick={() => setShowFilters(!showFilters)}
             >
@@ -346,7 +376,7 @@ export default function PackagesPage() {
 
           {/* Grid */}
           {filteredPackages.length > 0 ? (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid md:grid-cols-2 xl2:grid-cols-3 gap-8">
               {filteredPackages.map((pkg, index) => (
                 <motion.div
                   key={pkg.id}
@@ -364,14 +394,14 @@ export default function PackagesPage() {
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 to-transparent" />
-                      
+
                       {/* Tags */}
                       <div className="absolute top-4 left-4 flex gap-2">
                         <span className={cn(
                           "px-3 py-1 rounded-full text-xs font-semibold",
                           pkg.category === "Premium" ? "bg-gradient-gold text-primary-foreground" :
-                          pkg.category === "Spiritual" ? "bg-gradient-spiritual text-primary-foreground" :
-                          "bg-secondary text-secondary-foreground"
+                            pkg.category === "Spiritual" ? "bg-gradient-spiritual text-primary-foreground" :
+                              "bg-secondary text-secondary-foreground"
                         )}>
                           {pkg.category}
                         </span>
@@ -379,7 +409,7 @@ export default function PackagesPage() {
                           {pkg.type}
                         </span>
                       </div>
-                      
+
                       {/* Rating */}
                       <div className="absolute top-4 right-4 flex items-center gap-1 px-2 py-1 rounded-full bg-background/90 backdrop-blur-sm">
                         <Star className="w-3.5 h-3.5 text-gold fill-gold" />

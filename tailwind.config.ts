@@ -13,6 +13,9 @@ export default {
       },
     },
     extend: {
+      screens: {
+        xl2: "1300px",
+      },
       fontFamily: {
         sans: ["Inter", "system-ui", "sans-serif"],
         display: ["Playfair Display", "Georgia", "serif"],
@@ -65,6 +68,9 @@ export default {
         gold: {
           DEFAULT: "hsl(var(--gold))",
           light: "hsl(var(--gold-light))",
+        },
+        espresso: {
+          DEFAULT: "hsl(var(--espresso-brown))",
         },
         burgundy: {
           DEFAULT: "hsl(var(--burgundy))",

@@ -17,7 +17,11 @@ const countryToLanguage: Record<string, Language> = {
   TW: 'zh', // Taiwan
   HK: 'zh', // Hong Kong
   JP: 'ja', // Japan
-  IN: 'hi', // India (default to Hindi, can be changed)
+  IN: 'hi', // India
+  TH: 'th', // Thailand
+  LK: 'si', // Sri Lanka (Sinhala)
+  VN: 'vi', // Vietnam
+  BT: 'dz', // Bhutan (Dzongkha)
 };
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
@@ -37,29 +41,18 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
 
       // Try to detect from browser language
       const browserLang = navigator.language.split('-')[0];
-      if (browserLang === 'zh') {
-        setLanguageState('zh');
-        localStorage.setItem(LANGUAGE_KEY, 'zh');
-        setIsInitialized(true);
-        return;
-      }
-      if (browserLang === 'ja') {
-        setLanguageState('ja');
-        localStorage.setItem(LANGUAGE_KEY, 'ja');
-        setIsInitialized(true);
-        return;
-      }
-      if (browserLang === 'hi') {
-        setLanguageState('hi');
-        localStorage.setItem(LANGUAGE_KEY, 'hi');
+      const supportedLangs: Language[] = ['zh', 'ja', 'hi', 'th', 'si', 'vi', 'dz'];
+      if (supportedLangs.includes(browserLang as Language)) {
+        setLanguageState(browserLang as Language);
+        localStorage.setItem(LANGUAGE_KEY, browserLang);
         setIsInitialized(true);
         return;
       }
 
       // Try IP-based detection as fallback
       try {
-        const response = await fetch('https://ipapi.co/json/', { 
-          signal: AbortSignal.timeout(3000) 
+        const response = await fetch('https://ipapi.co/json/', {
+          signal: AbortSignal.timeout(3000)
         });
         const data = await response.json();
         const detectedLang = countryToLanguage[data.country_code] || 'en';
