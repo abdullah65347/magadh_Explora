@@ -54,7 +54,7 @@ const destinations = [
 
 export function DestinationsSection() {
   return (
-    <section className="py-24 bg-background relative overflow-hidden">
+    <section className="py-16 bg-background relative overflow-hidden">
       {/* Decorative Elements */}
       <div className="absolute top-1/2 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl -translate-y-1/2" />
 

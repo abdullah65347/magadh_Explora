@@ -47,7 +47,7 @@ const tours = [
 
 export function SpecialToursSection() {
   return (
-    <section className="py-24 bg-background relative overflow-hidden">
+    <section className="py-16 bg-background relative overflow-hidden">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <motion.div
@@ -64,7 +64,7 @@ export function SpecialToursSection() {
             Spiritual Journeys
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Dedicated packages for Buddhist and Jain pilgrims with special amenities 
+            Dedicated packages for Buddhist and Jain pilgrims with special amenities
             and religious arrangements
           </p>
         </motion.div>
@@ -78,9 +78,8 @@ export function SpecialToursSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className={`grid lg:grid-cols-2 gap-8 lg:gap-12 items-center ${
-                index % 2 === 1 ? "lg:flex-row-reverse" : ""
-              }`}
+              className={`grid lg:grid-cols-2 gap-8 lg:gap-12 items-center ${index % 2 === 1 ? "lg:flex-row-reverse" : ""
+                }`}
             >
               {/* Image */}
               <div className={`relative ${index % 2 === 1 ? "lg:order-2" : ""}`}>
@@ -92,7 +91,7 @@ export function SpecialToursSection() {
                     className="w-full h-80 md:h-96 object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 via-transparent to-transparent" />
-                  
+
                   {/* Places Tags */}
                   <div className="absolute bottom-4 left-4 right-4">
                     <div className="flex flex-wrap gap-2">
@@ -111,18 +110,17 @@ export function SpecialToursSection() {
 
               {/* Content */}
               <div className={index % 2 === 1 ? "lg:order-1" : ""}>
-                <span className={`inline-block px-3 py-1 rounded-full text-sm font-medium mb-4 ${
-                  tour.color === "teal" 
-                    ? "bg-accent/10 text-accent" 
-                    : "bg-primary/10 text-primary"
-                }`}>
+                <span className={`inline-block px-3 py-1 rounded-full text-sm font-medium mb-4 ${tour.color === "teal"
+                  ? "bg-accent/10 text-accent"
+                  : "bg-primary/10 text-primary"
+                  }`}>
                   {tour.subtitle}
                 </span>
-                
+
                 <h3 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
                   {tour.title}
                 </h3>
-                
+
                 <p className="text-muted-foreground text-lg mb-6 leading-relaxed">
                   {tour.description}
                 </p>
@@ -131,11 +129,10 @@ export function SpecialToursSection() {
                 <div className="grid sm:grid-cols-2 gap-3 mb-8">
                   {tour.features.map((feature) => (
                     <div key={feature} className="flex items-center gap-2">
-                      <div className={`w-5 h-5 rounded-full flex items-center justify-center ${
-                        tour.color === "teal" 
-                          ? "bg-accent/20 text-accent" 
-                          : "bg-primary/20 text-primary"
-                      }`}>
+                      <div className={`w-5 h-5 rounded-full flex items-center justify-center ${tour.color === "teal"
+                        ? "bg-accent/20 text-accent"
+                        : "bg-primary/20 text-primary"
+                        }`}>
                         <Check className="w-3 h-3" />
                       </div>
                       <span className="text-sm text-foreground">{feature}</span>
@@ -143,9 +140,9 @@ export function SpecialToursSection() {
                   ))}
                 </div>
 
-                <Button 
-                  variant={tour.color === "teal" ? "spiritual" : "premium"} 
-                  size="lg" 
+                <Button
+                  variant={tour.color === "teal" ? "spiritual" : "premium"}
+                  size="lg"
                   asChild
                 >
                   <Link to={tour.link}>

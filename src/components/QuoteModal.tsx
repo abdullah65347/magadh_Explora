@@ -270,7 +270,7 @@ export function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
                       {/* Package Tier */}
                       <div className="space-y-3">
                         <label className="text-sm font-medium">{t.quote.packageTier}</label>
-                        <div className="grid grid-cols-3 gap-3">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
                           {["essential", "deluxe", "premium"].map((tier) => (
                             <button
                               key={tier}
@@ -395,24 +395,26 @@ export function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
                       </div>
 
                       {/* Submit Button */}
-                      <Button
-                        type="submit"
-                        size="lg"
-                        className="w-full"
-                        disabled={isSubmitting}
-                      >
-                        {isSubmitting ? (
-                          <>
-                            <div className="w-4 h-4 border-2 border-primary-foreground border-t-transparent rounded-full animate-spin" />
-                            {t.quote.submitting}
-                          </>
-                        ) : (
-                          <>
-                            <Send className="w-4 h-4" />
-                            {t.quote.submit}
-                          </>
-                        )}
-                      </Button>
+                      <div className="pb-8">
+                        <Button
+                          type="submit"
+                          size="lg"
+                          className="w-full"
+                          disabled={isSubmitting}
+                        >
+                          {isSubmitting ? (
+                            <>
+                              <div className="w-4 h-4 border-2 border-primary-foreground border-t-transparent rounded-full animate-spin" />
+                              {t.quote.submitting}
+                            </>
+                          ) : (
+                            <>
+                              <Send className="w-4 h-4" />
+                              {t.quote.submit}
+                            </>
+                          )}
+                        </Button>
+                      </div>
                     </form>
 
                   </div>

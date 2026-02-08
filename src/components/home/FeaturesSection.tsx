@@ -1,10 +1,10 @@
 import { motion } from "framer-motion";
-import { 
-  Compass, 
-  Shield, 
-  Users, 
-  Sparkles, 
-  Clock, 
+import {
+  Compass,
+  Shield,
+  Users,
+  Sparkles,
+  Clock,
   HeartHandshake,
   Building,
   Languages
@@ -74,10 +74,10 @@ const itemVariants = {
 
 export function FeaturesSection() {
   return (
-    <section className="py-24 bg-muted/30 relative overflow-hidden">
+    <section className="py-16 bg-muted/30 relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 pattern-heritage opacity-50" />
-      
+
       <div className="container mx-auto px-4 relative">
         {/* Section Header */}
         <motion.div
@@ -94,7 +94,7 @@ export function FeaturesSection() {
             The Magadh Explora Difference
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            We combine local expertise with premium service to create travel 
+            We combine local expertise with premium service to create travel
             experiences that transform and inspire
           </p>
         </motion.div>
