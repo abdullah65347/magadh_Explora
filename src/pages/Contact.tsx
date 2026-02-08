@@ -9,6 +9,7 @@ import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 
 export default function ContactPage() {
+  const [loading, setLoading] = useState(false);
   const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: "",
@@ -18,19 +19,60 @@ export default function ContactPage() {
     message: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast({
-      title: "Message Sent!",
-      description: "We'll get back to you within 24 hours.",
-    });
-    setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
+    setLoading(true);
+
+    const payload = {
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      subject: formData.subject,
+      message: formData.message,
+    };
+
+    try {
+      const response = await fetch("http://localhost:8081/mail/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      if (!response.ok) {
+        throw new Error("Mail sending failed");
+      }
+
+      toast({
+        title: "Message Sent!",
+        description: "We'll get back to you within 24 hours.",
+      });
+
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        subject: "",
+        message: "",
+      });
+    } catch (error) {
+      console.error(error);
+      toast({
+        title: "Error",
+        description: "Failed to send message. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setLoading(false);
+    }
   };
+
 
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      
+
       {/* Hero */}
       <section className="pt-24 pb-12 bg-gradient-warm relative overflow-hidden">
         <div className="absolute inset-0 pattern-heritage opacity-30" />
@@ -63,7 +105,7 @@ export default function ContactPage() {
               <h2 className="font-display text-2xl font-bold text-foreground mb-6">
                 Contact Information
               </h2>
-              
+
               <div className="space-y-6 mb-8">
                 <div className="flex items-start gap-4">
                   <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
@@ -118,9 +160,15 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              {/* Map Placeholder */}
-              <div className="aspect-video rounded-2xl bg-muted flex items-center justify-center">
-                <p className="text-muted-foreground">Interactive Map</p>
+              {/* Interactive Map */}
+              <div className="aspect-video rounded-2xl overflow-hidden bg-muted">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7224.794059733375!2d85.4542082408597!3d25.122264625000206!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f2f22035c54b97%3A0x46687132915778f3!2sNalanda%2C%20Bihar%20803111!5e0!3m2!1sen!2sin!4v1770478152510!5m2!1sen!2sin"
+                  className="w-full h-full border-0"
+                  loading="lazy"
+                  allowFullScreen
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
               </div>
             </motion.div>
 
@@ -134,7 +182,7 @@ export default function ContactPage() {
                 <h2 className="font-display text-2xl font-bold text-foreground mb-6">
                   Send us a Message
                 </h2>
-                
+
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid sm:grid-cols-2 gap-4">
                     <div>
@@ -168,7 +216,7 @@ export default function ContactPage() {
                         Phone Number
                       </label>
                       <Input
-                        placeholder="+91 98765 43210"
+                        placeholder="00000 00000"
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                       />
@@ -199,9 +247,9 @@ export default function ContactPage() {
                     />
                   </div>
 
-                  <Button type="submit" variant="hero" className="w-full" size="lg">
+                  <Button type="submit" disabled={loading} variant="hero" className="w-full" size="lg">
                     <Send className="w-5 h-5 mr-2" />
-                    Send Message
+                    {loading ? "Sending..." : "Send Message"}
                   </Button>
                 </form>
               </div>

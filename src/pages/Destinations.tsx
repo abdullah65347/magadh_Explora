@@ -1,9 +1,9 @@
 import { motion } from "framer-motion";
-import { 
-  MapPin, 
-  Clock, 
-  Camera, 
-  Utensils, 
+import {
+  MapPin,
+  Clock,
+  Camera,
+  Utensils,
   ArrowRight,
   Star,
   Calendar
@@ -23,7 +23,7 @@ import heroImg from "@/assets/hero-nalanda.jpg";
 
 const destinations = [
   {
-    id: "bodh-gaya",
+    id: "1",
     name: "Bodh Gaya",
     subtitle: "The Enlightenment Ground",
     description: "Where Siddhartha Gautama attained enlightenment under the Bodhi Tree, becoming Buddha. A UNESCO World Heritage Site and the most important Buddhist pilgrimage destination.",
@@ -35,7 +35,7 @@ const destinations = [
     type: "Buddhist",
   },
   {
-    id: "rajgir",
+    id: "2",
     name: "Rajgir",
     subtitle: "Ancient Capital of Magadha",
     description: "Historic city surrounded by five hills, serving as the first capital of the Magadha empire. Famous for hot springs, Vulture Peak, and the peace pagoda.",
@@ -47,7 +47,7 @@ const destinations = [
     type: "Heritage",
   },
   {
-    id: "nalanda",
+    id: "3",
     name: "Nalanda",
     subtitle: "World's First University",
     description: "Ruins of the ancient Nalanda Mahavihara, one of the world's first residential universities. A UNESCO World Heritage Site representing the zenith of Buddhist learning.",
@@ -59,7 +59,7 @@ const destinations = [
     type: "Heritage",
   },
   {
-    id: "pawapuri",
+    id: "4",
     name: "Pawapuri",
     subtitle: "Jain Tirth - Jal Mandir",
     description: "Sacred Jain pilgrimage site where Lord Mahavira attained Moksha. The iconic Jal Mandir temple sits beautifully in the middle of a lotus pond.",
@@ -71,7 +71,7 @@ const destinations = [
     type: "Jain",
   },
   {
-    id: "kesariya",
+    id: "5",
     name: "Kesariya",
     subtitle: "World's Tallest Stupa",
     description: "Home to the tallest Buddhist stupa in the world, dating back to the Mauryan period. An archaeological marvel still being excavated.",
@@ -83,7 +83,7 @@ const destinations = [
     type: "Buddhist",
   },
   {
-    id: "vaishali",
+    id: "6",
     name: "Vaishali",
     subtitle: "World's First Republic",
     description: "Birthplace of democracy and the last sermon location of Lord Buddha. Also significant in Jain history as Lord Mahavira's birthplace.",
@@ -117,7 +117,7 @@ export default function Destinations() {
     return (
       <div className="min-h-screen bg-background">
         <Header />
-        
+
         {/* Hero */}
         <section className="relative h-[60vh] min-h-[400px]">
           <img
@@ -131,8 +131,8 @@ export default function Destinations() {
               <span className={cn(
                 "inline-block px-3 py-1 rounded-full text-sm font-semibold mb-4",
                 destination.type === "Buddhist" ? "bg-accent text-accent-foreground" :
-                destination.type === "Jain" ? "bg-primary text-primary-foreground" :
-                "bg-secondary text-secondary-foreground"
+                  destination.type === "Jain" ? "bg-primary text-primary-foreground" :
+                    "bg-secondary text-secondary-foreground"
               )}>
                 {destination.type}
               </span>
@@ -210,7 +210,7 @@ export default function Destinations() {
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      
+
       {/* Hero */}
       <section className="pt-24 pb-12 bg-gradient-warm relative overflow-hidden">
         <div className="absolute inset-0 pattern-heritage opacity-30" />
@@ -224,7 +224,7 @@ export default function Destinations() {
               Discover Bihar's Treasures
             </h1>
             <p className="text-muted-foreground text-lg">
-              Explore ancient cities, sacred temples, and UNESCO World Heritage Sites 
+              Explore ancient cities, sacred temples, and UNESCO World Heritage Sites
               in the heartland of Buddhism and Jainism
             </p>
           </motion.div>
@@ -251,16 +251,16 @@ export default function Destinations() {
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 to-transparent" />
-                      
+
                       <span className={cn(
                         "absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-semibold",
                         dest.type === "Buddhist" ? "bg-accent text-accent-foreground" :
-                        dest.type === "Jain" ? "bg-primary text-primary-foreground" :
-                        "bg-secondary text-secondary-foreground"
+                          dest.type === "Jain" ? "bg-primary text-primary-foreground" :
+                            "bg-secondary text-secondary-foreground"
                       )}>
                         {dest.type}
                       </span>
-                      
+
                       <div className="absolute top-4 right-4 flex items-center gap-1 px-2 py-1 rounded-full bg-background/90">
                         <Star className="w-3.5 h-3.5 text-gold fill-gold" />
                         <span className="text-xs font-semibold">{dest.rating}</span>
@@ -275,7 +275,7 @@ export default function Destinations() {
                       <p className="text-muted-foreground text-sm line-clamp-2 mb-4">
                         {dest.description}
                       </p>
-                      
+
                       <div className="flex items-center justify-between text-sm text-muted-foreground">
                         <span className="flex items-center gap-1">
                           <Clock className="w-4 h-4" />

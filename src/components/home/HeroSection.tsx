@@ -12,35 +12,33 @@ interface HeroSectionProps {
 
 export function HeroSection({ onGetQuote }: HeroSectionProps) {
   const { t } = useLanguage();
+  //   {
+  //     image: "/images/hero-bihar.jpg",
+  //     title: "Discover the\nAncient Wonders\nof Bihar",
+  //     subtitle: "3000 years of history, spirituality & adventure await",
+  //   },
+  //   {
+  //     image: "/images/bodh-gaya.jpg",
+  //     title: "Walk the Path\nof Enlightenment",
+  //     subtitle: "Explore sacred Buddhist sites across the Magadh region",
+  //   },
+  //   {
+  //     image: "/images/rajgir.jpg",
+  //     title: "Where Empires\nWere Born",
+  //     subtitle: "Experience the grandeur of the ancient Magadh Empire",
+  //   },
+  // ];
 
-  const heroSlides = [
-    {
-      image: "/images/hero-bihar.jpg",
-      title: "Discover the\nAncient Wonders\nof Bihar",
-      subtitle: "3000 years of history, spirituality & adventure await",
-    },
-    {
-      image: "/images/bodh-gaya.jpg",
-      title: "Walk the Path\nof Enlightenment",
-      subtitle: "Explore sacred Buddhist sites across the Magadh region",
-    },
-    {
-      image: "/images/rajgir.jpg",
-      title: "Where Empires\nWere Born",
-      subtitle: "Experience the grandeur of the ancient Magadh Empire",
-    },
-  ];
+  // const [currentSlide, setCurrentSlide] = useState(0);
 
-  const [currentSlide, setCurrentSlide] = useState(0);
+  // useEffect(() => {
+  //   const timer = setInterval(() => {
+  //     setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
+  //   }, 6000);
+  //   return () => clearInterval(timer);
+  // }, []);
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
-    }, 6000);
-    return () => clearInterval(timer);
-  }, []);
-
-  const slide = heroSlides[currentSlide];
+  // const slide = heroSlides[currentSlide];
 
   const stats = [
     { icon: Star, value: "4.9", label: t.hero.stats.destinations },
@@ -83,7 +81,7 @@ export function HeroSection({ onGetQuote }: HeroSectionProps) {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="font-display text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-primary-foreground leading-tight mb-6"
+              className="font-display text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-primary-foreground leading-tight mb-6"
             >
               {t.hero.title}
               <span className="block text-gradient-gold">{t.hero.titleHighlight}</span>
@@ -171,7 +169,9 @@ export function HeroSection({ onGetQuote }: HeroSectionProps) {
                     <p className="text-sm text-muted-foreground">Starting from</p>
                     <p className="text-2xl font-bold text-primary">₹45,000</p>
                   </div>
-                  <Button size="sm">View Details</Button>
+                  <Link to="/customize" >
+                    <Button size="sm">View Details</Button>
+                  </Link>
                 </div>
               </div>
             </div>
