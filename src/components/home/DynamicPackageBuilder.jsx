@@ -56,7 +56,10 @@ export function DynamicPackageBuilder() {
                             max={14}
                             value={duration}
                             onChange={(e) => setDuration(Number(e.target.value))}
-                            className="w-full accent-primary"
+                            style={{
+                                "--progress": `${((duration - 2) / (14 - 2)) * 100}%`,
+                            }}
+                            className="w-full duration-slider"
                         />
                         <div className="flex justify-between text-xs text-muted-foreground mt-1">
                             <span>2 days</span>
@@ -76,8 +79,12 @@ export function DynamicPackageBuilder() {
                             max={20}
                             value={travelers}
                             onChange={(e) => setTravelers(Number(e.target.value))}
-                            className="w-full accent-primary"
+                            style={{
+                                "--progress": `${((travelers - 1) / (20 - 1)) * 100}%`,
+                            }}
+                            className="w-full duration-slider"
                         />
+
                         <div className="flex justify-between text-xs text-muted-foreground mt-1">
                             <span>1 person</span>
                             <span>20 people</span>

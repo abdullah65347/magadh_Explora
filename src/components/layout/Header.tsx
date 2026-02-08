@@ -65,11 +65,11 @@ export function Header({ onGetQuote }: HeaderProps) {
           {/* Logo */}
           <Link to="/" onClick={scrollToTop} className="flex items-center gap-3 group">
             <div className="relative">
-              <div className="w-14 h-14 rounded-full bg-white shadow-medium overflow-hidden flex items-center justify-center">
+              <div className="w-11 h-11 sm:w-14 sm:h-14 rounded-full bg-white shadow-medium overflow-hidden flex items-center justify-center">
                 <img
                   src={MagadhExploraLogo}
                   alt="Magadh Explora Logo"
-                  className="w-11 h-11 object-contain"
+                  className="w-8 h-8 sm:w-11 sm:h-11 object-contain"
                 />
               </div>
               {/* <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-accent rounded-full border-2 border-background" /> */}
