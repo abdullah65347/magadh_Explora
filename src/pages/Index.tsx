@@ -26,7 +26,7 @@ const Index = () => {
         <DestinationsSection />
         <SpecialToursSection />
         <ShareJourneySection />
-        {/* <DynamicPackageBuilder /> */}
+        <DynamicPackageBuilder />
         <FeaturesSection />
         <TestimonialsSection />
         <CTASection onGetQuote={() => setIsQuoteModalOpen(true)} />
