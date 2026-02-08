@@ -14,7 +14,7 @@ export function DynamicPackageBuilder() {
     const estimatedPrice = basePrice * duration * travelers * 0.85;
 
     return (
-        <section className="py-20 bg-muted/30 relative overflow-hidden">
+        <section className="py-16 bg-muted/30 relative overflow-hidden">
             <div className="absolute inset-0 pattern-heritage opacity-30" />
 
             <div className="container mx-auto px-4 relative">
@@ -56,11 +56,15 @@ export function DynamicPackageBuilder() {
                             max={14}
                             value={duration}
                             onChange={(e) => setDuration(Number(e.target.value))}
-                            className="w-full accent-primary"
+                            style={{
+                                "--progress": `${((duration - 2) / (14 - 2)) * 100}%`,
+                            }}
+                            className="w-full duration-slider"
                         />
                         <div className="flex justify-between text-xs text-muted-foreground mt-1">
                             <span>2 days</span>
                             <span>14 days</span>
+
                         </div>
                     </div>
 
@@ -76,8 +80,12 @@ export function DynamicPackageBuilder() {
                             max={20}
                             value={travelers}
                             onChange={(e) => setTravelers(Number(e.target.value))}
-                            className="w-full accent-primary"
+                            style={{
+                                "--progress": `${((travelers - 1) / (20 - 1)) * 100}%`,
+                            }}
+                            className="w-full duration-slider"
                         />
+
                         <div className="flex justify-between text-xs text-muted-foreground mt-1">
                             <span>1 person</span>
                             <span>20 people</span>
