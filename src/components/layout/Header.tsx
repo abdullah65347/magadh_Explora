@@ -19,6 +19,10 @@ export function Header({ onGetQuote }: HeaderProps) {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const location = useLocation();
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   const navItems = [
     { name: t.nav.home, path: "/" },
     { name: t.nav.packages, path: "/packages" },
@@ -59,7 +63,7 @@ export function Header({ onGetQuote }: HeaderProps) {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-3 group">
+          <Link to="/" onClick={scrollToTop} className="flex items-center gap-3 group">
             <div className="relative">
               <div className="w-14 h-14 rounded-full bg-white shadow-medium overflow-hidden flex items-center justify-center">
                 <img

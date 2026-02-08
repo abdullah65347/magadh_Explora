@@ -57,7 +57,7 @@ export function DestinationsSection() {
     <section className="py-24 bg-background relative overflow-hidden">
       {/* Decorative Elements */}
       <div className="absolute top-1/2 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl -translate-y-1/2" />
-      
+
       <div className="container mx-auto px-4 relative">
         {/* Section Header */}
         <motion.div
@@ -102,7 +102,7 @@ export function DestinationsSection() {
                   className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-foreground/20 to-transparent" />
-                
+
                 {/* Content */}
                 <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
                   <span className="inline-block px-3 py-1 rounded-full bg-primary text-primary-foreground text-xs font-semibold mb-3">
@@ -140,7 +140,7 @@ export function DestinationsSection() {
                     className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-foreground/70 to-transparent" />
-                  
+
                   <div className="absolute bottom-0 left-0 right-0 p-4">
                     <h3 className="font-display text-lg font-bold text-primary-foreground mb-1">
                       {dest.name}
