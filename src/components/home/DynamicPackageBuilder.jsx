@@ -14,7 +14,7 @@ export function DynamicPackageBuilder() {
     const estimatedPrice = basePrice * duration * travelers * 0.85;
 
     return (
-        <section className="py-20 bg-muted/30 relative overflow-hidden">
+        <section className="py-16 bg-muted/30 relative overflow-hidden">
             <div className="absolute inset-0 pattern-heritage opacity-30" />
 
             <div className="container mx-auto px-4 relative">
@@ -64,6 +64,7 @@ export function DynamicPackageBuilder() {
                         <div className="flex justify-between text-xs text-muted-foreground mt-1">
                             <span>2 days</span>
                             <span>14 days</span>
+
                         </div>
                     </div>
 
