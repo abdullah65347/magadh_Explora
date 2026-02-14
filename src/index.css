@@ -352,8 +352,8 @@
   height: 6px;
   border-radius: 999px;
   background: linear-gradient(to right,
-      #c2410c 0%,
-      #c2410c var(--progress),
+      #Db7706 0%,
+      #Db7706 var(--progress),
       #e5e7eb var(--progress),
       #e5e7eb 100%);
 }
@@ -365,7 +365,7 @@
   /* aligns thumb center */
   width: 18px;
   height: 18px;
-  background-color: #c2410c;
+  background-color: #Db7706;
   border-radius: 50%;
   cursor: pointer;
 }
@@ -380,13 +380,60 @@
 .duration-slider::-moz-range-progress {
   height: 6px;
   border-radius: 999px;
-  background: #c2410c;
+  background: #Db7706;
 }
 
 .custom-slider::-moz-range-thumb {
   width: 18px;
   height: 18px;
-  background-color: #c2410c;
+  background-color: #Db7706;
   border-radius: 50%;
   border: none;
+}
+
+/* ===== Quote Modal DatePicker Only ===== */
+
+.quote-datepicker {
+  margin-left: 40px;
+  border-radius: 16px !important;
+  border: 1px solid hsl(var(--border)) !important;
+  padding: 12px !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08) !important;
+  font-family: inherit !important;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .quote-datepicker {
+    margin-left: 0;
+  }
+}
+
+.quote-datepicker-popper {
+  z-index: 1000 !important;
+}
+
+/* Header */
+.quote-datepicker .react-datepicker__header {
+  background-color: transparent !important;
+  border-bottom: 1px solid hsl(var(--border)) !important;
+}
+
+/* Month hover */
+.quote-datepicker .react-datepicker__month-text:hover {
+  background-color: hsl(var(--primary) / 0.15) !important;
+  border-radius: 8px !important;
+}
+
+/* Selected month */
+.quote-datepicker .react-datepicker__month-text--selected {
+  background-color: hsl(var(--primary)) !important;
+  color: white !important;
+  font-weight: 600 !important;
+  border-radius: 8px !important;
+}
+
+/* Remove triangle arrow */
+.quote-datepicker .react-datepicker__triangle {
+  display: none !important;
 }

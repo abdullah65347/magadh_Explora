@@ -112,7 +112,7 @@ export const translations = {
       travelerType: "Traveler Type",
       packageTier: "Package Tier",
       destinations: "Preferred Destinations",
-      travelDates: "Preferred Travel Dates",
+      travelDates: "Preferred Travel Month",
       groupSize: "Group Size",
       budget: "Budget Range",
       requirements: "Special Requirements",

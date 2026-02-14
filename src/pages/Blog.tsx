@@ -13,6 +13,7 @@ import rajgirImg from "@/assets/rajgir.jpg";
 import pawapuriImg from "@/assets/pawapuri.jpg";
 import kesariyaImg from "@/assets/kesariya.jpg";
 import heroImg from "@/assets/hero-nalanda.jpg";
+import { blogCover } from "@/assets/assets";
 
 const blogPosts = [
   {
@@ -143,17 +144,20 @@ export default function Blog() {
   const { t, language } = useLanguage();
   const [selectedCategory, setSelectedCategory] = useState("all");
 
-  const filteredPosts = selectedCategory === "all" 
-    ? blogPosts 
+  const filteredPosts = selectedCategory === "all"
+    ? blogPosts
     : blogPosts.filter(post => post.category === selectedCategory);
 
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      
+
       {/* Hero Section */}
       <section className="pt-24 pb-12 bg-gradient-warm relative overflow-hidden">
-        <div className="absolute inset-0 pattern-heritage opacity-30" />
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: `url(${blogCover})` }}
+        />
         <div className="container mx-auto px-4 relative">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -161,13 +165,10 @@ export default function Blog() {
             transition={{ duration: 0.6 }}
             className="max-w-3xl mx-auto text-center py-12"
           >
-            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
-              {t.blog.badge}
-            </span>
             <h1 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-4">
               {t.blog.title}
             </h1>
-            <p className="text-muted-foreground text-lg">
+            <p className="text-white text-lg">
               {t.blog.subtitle}
             </p>
           </motion.div>
@@ -217,7 +218,7 @@ export default function Blog() {
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 to-transparent" />
-                    
+
                     {/* Category Tag */}
                     <span className="absolute top-4 left-4 px-3 py-1 rounded-full bg-primary text-primary-foreground text-xs font-semibold">
                       {t.blog.categories[post.category as keyof typeof t.blog.categories]}
@@ -230,10 +231,10 @@ export default function Blog() {
                     <div className="flex items-center gap-4 text-xs text-muted-foreground mb-3">
                       <span className="flex items-center gap-1">
                         <Calendar className="w-3 h-3" />
-                        {new Date(post.date).toLocaleDateString(language === 'zh' ? 'zh-CN' : language === 'ja' ? 'ja-JP' : language === 'hi' ? 'hi-IN' : 'en-US', { 
-                          year: 'numeric', 
-                          month: 'short', 
-                          day: 'numeric' 
+                        {new Date(post.date).toLocaleDateString(language === 'zh' ? 'zh-CN' : language === 'ja' ? 'ja-JP' : language === 'hi' ? 'hi-IN' : 'en-US', {
+                          year: 'numeric',
+                          month: 'short',
+                          day: 'numeric'
                         })}
                       </span>
                       <span className="flex items-center gap-1">
@@ -245,7 +246,7 @@ export default function Blog() {
                     <h3 className="font-display text-lg font-bold text-foreground mb-2 group-hover:text-primary transition-colors line-clamp-2">
                       {post.title[language]}
                     </h3>
-                    
+
                     <p className="text-muted-foreground text-sm mb-4 line-clamp-3 flex-1">
                       {post.excerpt[language]}
                     </p>

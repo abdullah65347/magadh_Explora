@@ -4,21 +4,33 @@ import { Camera, Video, Film, Upload, Play, Heart, Eye, Share2 } from "lucide-re
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { cn } from "@/lib/utils";
+import { useToast } from "@/hooks/use-toast";
+import {
+    bodhGayaSharedImg,
+    nalandaUniversityImg,
+    rajgirMainImg,
+    ashokanPillarVaishaliImg,
+    golGharPatnaImg,
+    rajgir1Img,
+    sunsetBodhgayaImg,
+    walkingNalandaImg,
+    meditationRajgirImg,
+} from "@/assets/assets";
 
 // Sample UGC content (mock data - in production this would come from database)
 const sampleContent = {
     photos: [
-        { id: 1, url: "https://images.unsplash.com/photo-1544015759-237f87627549?w=400", user: "Amit K.", location: "Bodh Gaya", likes: 234 },
-        { id: 2, url: "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=400", user: "Sarah M.", location: "Nalanda", likes: 189 },
-        { id: 3, url: "https://images.unsplash.com/photo-1606393777429-3962f492f71c?w=400", user: "Raj P.", location: "Rajgir", likes: 156 },
-        { id: 4, url: "https://images.unsplash.com/photo-1590845947698-8924d7409b56?w=400", user: "Emily C.", location: "Pawapuri", likes: 203 },
-        { id: 5, url: "https://images.unsplash.com/photo-1548013146-72479768bada?w=400", user: "Chen W.", location: "Vaishali", likes: 178 },
-        { id: 6, url: "https://images.unsplash.com/photo-1598091383021-15ddea10925d?w=400", user: "Priya S.", location: "Kesariya", likes: 145 },
+        { id: 1, url: bodhGayaSharedImg, user: "Amit K.", location: "Bodh Gaya", likes: 234 },
+        { id: 2, url: nalandaUniversityImg, user: "Sarah M.", location: "Nalanda", likes: 189 },
+        { id: 3, url: rajgirMainImg, user: "Raj P.", location: "Rajgir", likes: 156 },
+        { id: 4, url: rajgir1Img, user: "Emily C.", location: "Rajgir", likes: 203 },
+        { id: 5, url: ashokanPillarVaishaliImg, user: "Chen W.", location: "Vaishali", likes: 178 },
+        { id: 6, url: golGharPatnaImg, user: "Priya S.", location: "Patna", likes: 145 },
     ],
     videos: [
-        { id: 1, thumbnail: "https://images.unsplash.com/photo-1544015759-237f87627549?w=400", user: "Travel Monk", title: "Sunrise at Bodh Gaya", views: 12500, duration: "4:32" },
-        { id: 2, thumbnail: "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=400", user: "Bihar Explorer", title: "Walking Through Nalanda", views: 8900, duration: "6:15" },
-        { id: 3, thumbnail: "https://images.unsplash.com/photo-1606393777429-3962f492f71c?w=400", user: "Spiritual Journey", title: "Meditation in Rajgir", views: 15200, duration: "3:45" },
+        { id: 1, thumbnail: sunsetBodhgayaImg, user: "Travel Monk", title: "Sunrise at Bodh Gaya", views: 12500, duration: "4:32" },
+        { id: 2, thumbnail: walkingNalandaImg, user: "Bihar Explorer", title: "Walking Through Nalanda", views: 8900, duration: "6:15" },
+        { id: 3, thumbnail: meditationRajgirImg, user: "Spiritual Journey", title: "Meditation in Rajgir", views: 15200, duration: "3:45" },
     ],
     reels: [
         { id: 1, thumbnail: "https://images.unsplash.com/photo-1590845947698-8924d7409b56?w=400", user: "@bihartravel", likes: 5600 },
@@ -34,12 +46,21 @@ export function ShareJourneySection() {
     const { t } = useLanguage();
     const [activeTab, setActiveTab] = useState<ContentType>("photos");
     const [showUploadModal, setShowUploadModal] = useState(false);
+    const { toast } = useToast();
 
     const tabs = [
         { id: "photos" as ContentType, icon: Camera, label: t.shareJourney.photos },
         { id: "videos" as ContentType, icon: Video, label: t.shareJourney.videos },
         { id: "reels" as ContentType, icon: Film, label: t.shareJourney.reels },
     ];
+
+    const handleShareClick = () => {
+        toast({
+            title: "Feature Coming Soon 🚀",
+            description:
+                "We’re building something exciting! Soon you’ll be able to share your travel stories, photos, and reels with the Magadh Explora community.",
+        });
+    };
 
     return (
         <section className="py-24 bg-gradient-warm relative overflow-hidden">
@@ -228,7 +249,7 @@ export function ShareJourneySection() {
                                 {t.shareJourney.uploadSubtitle}
                             </p>
                         </div>
-                        <Button variant="default" size="lg" className="shrink-0">
+                        <Button variant="default" size="lg" className="shrink-0" onClick={handleShareClick}>
                             <Camera className="w-4 h-4 mr-2" />
                             {t.shareJourney.shareNow}
                         </Button>

@@ -1,10 +1,12 @@
 import { useState, useMemo } from "react";
 import { motion } from "framer-motion";
-import { 
-  Users, 
-  Calendar, 
-  Hotel, 
-  Utensils, 
+import { calculatePrice } from "@/lib/pricing";
+import { SoloIcon, CoupleIcon, FamilyIcon, SchoolIcon, CollegeIcon, CorporateIcon } from "@/assets/assets";
+import {
+  Users,
+  Calendar,
+  Hotel,
+  Utensils,
   MapPin,
   Plus,
   Minus,
@@ -23,6 +25,8 @@ import bodhGayaImg from "@/assets/bodh-gaya.jpg";
 import rajgirImg from "@/assets/rajgir.jpg";
 import pawapuriImg from "@/assets/pawapuri.jpg";
 import nalandaImg from "@/assets/nalanda.jpg";
+import { BookingModal } from "@/components/BookingModal";
+import { customizeCover } from "@/assets/assets";
 
 const destinations = [
   { id: "bodh-gaya", name: "Bodh Gaya", image: bodhGayaImg, minDays: 1, suggestedDays: 2 },
@@ -34,25 +38,25 @@ const destinations = [
 ];
 
 const travelerTypes = [
-  { id: "solo", name: "Solo Traveler", icon: "👤", multiplier: 1.8 },
-  { id: "couple", name: "Couple", icon: "💑", multiplier: 2.0 },
-  { id: "family", name: "Family", icon: "👨‍👩‍👧‍👦", multiplier: 3.5 },
-  { id: "school", name: "School Group", icon: "🎒", multiplier: 6.0 },
-  { id: "college", name: "College Group", icon: "🎓", multiplier: 6.0 },
-  { id: "corporate", name: "Corporate", icon: "💼", multiplier: 4.0 },
+  { id: "solo", name: "Solo Traveler", icon: SoloIcon, multiplier: 1.8 },
+  { id: "couple", name: "Couple", icon: CoupleIcon, multiplier: 2.0 },
+  { id: "family", name: "Family", icon: FamilyIcon, multiplier: 3.5 },
+  { id: "school", name: "School Group", icon: SchoolIcon, multiplier: 6.0 },
+  { id: "college", name: "College Group", icon: CollegeIcon, multiplier: 6.0 },
+  { id: "corporate", name: "Corporate", icon: CorporateIcon, multiplier: 4.0 },
 ];
 
 const packageTypes = [
-  { 
-    id: "essential", 
-    name: "Essential", 
+  {
+    id: "essential",
+    name: "Essential",
     multiplier: 1.0,
     features: ["Budget hotels (2-3 star)", "Basic transportation", "Standard guide (optional)"],
     color: "secondary"
   },
-  { 
-    id: "premium", 
-    name: "Premium", 
+  {
+    id: "premium",
+    name: "Premium",
     multiplier: 2.5,
     features: ["Luxury hotels (4-5 star)", "Premium transportation", "Expert multilingual guide", "All meals included", "VIP experiences"],
     color: "primary"
@@ -79,42 +83,33 @@ const BASE_RATE = 5000; // Per day base rate
 
 export default function CustomizePage() {
   const [step, setStep] = useState(1);
-  const [selectedDestinations, setSelectedDestinations] = useState<{id: string; days: number}[]>([]);
+  const [selectedDestinations, setSelectedDestinations] = useState<{ id: string; days: number }[]>([]);
   const [travelerType, setTravelerType] = useState("couple");
   const [travelerCount, setTravelerCount] = useState(2);
   const [packageType, setPackageType] = useState("essential");
   const [mealOption, setMealOption] = useState("none");
   const [selectedActivities, setSelectedActivities] = useState<string[]>([]);
+  const [isBookingOpen, setIsBookingOpen] = useState(false);
 
   const totalDays = selectedDestinations.reduce((acc, d) => acc + d.days, 0);
 
   const pricing = useMemo(() => {
-    const traveler = travelerTypes.find(t => t.id === travelerType);
-    const pkg = packageTypes.find(p => p.id === packageType);
-    const meal = mealOptions.find(m => m.id === mealOption);
-
-    const baseCost = BASE_RATE * totalDays * (traveler?.multiplier || 1);
-    const packageCost = baseCost * (pkg?.multiplier || 1);
-    const mealCost = baseCost * (meal?.multiplier || 0);
-    const activitiesCost = selectedActivities.reduce((acc, actId) => {
-      const activity = activities.find(a => a.id === actId);
-      return acc + (activity?.price || 0) * travelerCount;
-    }, 0);
-
-    const subtotal = packageCost + mealCost + activitiesCost;
-    const discount = subtotal > 50000 ? subtotal * 0.1 : 0;
-    const total = subtotal - discount;
-
-    return {
-      baseCost,
-      packageCost,
-      mealCost,
-      activitiesCost,
-      subtotal,
-      discount,
-      total,
-    };
-  }, [totalDays, travelerType, travelerCount, packageType, mealOption, selectedActivities]);
+    return calculatePrice({
+      destinations: selectedDestinations,
+      travelerType,
+      travelerCount,
+      packageType,
+      mealOption,
+      activities: selectedActivities,
+    });
+  }, [
+    selectedDestinations,
+    travelerType,
+    travelerCount,
+    packageType,
+    mealOption,
+    selectedActivities,
+  ]);
 
   const toggleDestination = (destId: string) => {
     setSelectedDestinations(prev => {
@@ -128,7 +123,7 @@ export default function CustomizePage() {
   };
 
   const updateDays = (destId: string, change: number) => {
-    setSelectedDestinations(prev => 
+    setSelectedDestinations(prev =>
       prev.map(d => {
         if (d.id === destId) {
           const dest = destinations.find(dest => dest.id === destId);
@@ -141,8 +136,8 @@ export default function CustomizePage() {
   };
 
   const toggleActivity = (actId: string) => {
-    setSelectedActivities(prev => 
-      prev.includes(actId) 
+    setSelectedActivities(prev =>
+      prev.includes(actId)
         ? prev.filter(a => a !== actId)
         : [...prev, actId]
     );
@@ -151,24 +146,24 @@ export default function CustomizePage() {
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      
+
       {/* Hero */}
-      <section className="pt-24 pb-8 bg-gradient-warm relative overflow-hidden">
-        <div className="absolute inset-0 pattern-heritage opacity-30" />
+      <section className="pt-24 pb-12 relative overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: `url(${customizeCover})` }}
+        />
         <div className="container mx-auto px-4 relative">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="max-w-3xl mx-auto text-center py-8"
+            transition={{ duration: 0.6 }}
+            className="max-w-3xl mx-auto text-center py-12"
           >
-            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
-              <Sparkles className="w-4 h-4" />
-              Build Your Dream Trip
-            </span>
             <h1 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-4">
               Custom Package Builder
             </h1>
-            <p className="text-muted-foreground text-lg">
+            <p className="text-white text-lg">
               Create your perfect Bihar travel experience with our dynamic package builder
             </p>
           </motion.div>
@@ -185,28 +180,49 @@ export default function CustomizePage() {
               { num: 3, label: "Package" },
               { num: 4, label: "Activities" },
               { num: 5, label: "Review" },
-            ].map((s, i) => (
-              <button
-                key={s.num}
-                onClick={() => setStep(s.num)}
-                className="flex items-center gap-2"
-              >
-                <div className={cn(
-                  "w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold transition-all",
-                  step >= s.num 
-                    ? "bg-primary text-primary-foreground" 
-                    : "bg-muted text-muted-foreground"
-                )}>
-                  {step > s.num ? <Check className="w-4 h-4" /> : s.num}
-                </div>
-                <span className={cn(
-                  "hidden md:inline text-sm font-medium",
-                  step >= s.num ? "text-foreground" : "text-muted-foreground"
-                )}>
-                  {s.label}
-                </span>
-              </button>
-            ))}
+            ].map((s) => {
+              const isDisabled =
+                s.num > 1 && selectedDestinations.length === 0;
+
+              return (
+                <button
+                  key={s.num}
+                  onClick={() => {
+                    if (!isDisabled) {
+                      setStep(s.num);
+                    }
+                  }}
+                  disabled={isDisabled}
+                  className={cn(
+                    "flex items-center gap-2",
+                    isDisabled && "cursor-not-allowed opacity-50"
+                  )}
+                >
+                  <div
+                    className={cn(
+                      "w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold transition-all",
+                      step >= s.num
+                        ? "bg-primary text-primary-foreground"
+                        : "bg-muted text-muted-foreground"
+                    )}
+                  >
+                    {step > s.num ? <Check className="w-4 h-4" /> : s.num}
+                  </div>
+
+                  <span
+                    className={cn(
+                      "hidden md:inline text-sm font-medium",
+                      step >= s.num
+                        ? "text-foreground"
+                        : "text-muted-foreground"
+                    )}
+                  >
+                    {s.label}
+                  </span>
+                </button>
+              );
+            })}
+
           </div>
         </div>
       </section>
@@ -237,8 +253,8 @@ export default function CustomizePage() {
                         key={dest.id}
                         className={cn(
                           "relative rounded-xl overflow-hidden border-2 transition-all cursor-pointer",
-                          selected 
-                            ? "border-primary shadow-medium" 
+                          selected
+                            ? "border-primary shadow-medium"
                             : "border-transparent shadow-soft hover:shadow-medium"
                         )}
                         onClick={() => toggleDestination(dest.id)}
@@ -255,7 +271,7 @@ export default function CustomizePage() {
                             </div>
                           )}
                         </div>
-                        
+
                         {selected && (
                           <div className="p-3 bg-card" onClick={(e) => e.stopPropagation()}>
                             <div className="flex items-center justify-between">
@@ -310,7 +326,13 @@ export default function CustomizePage() {
                           : "border-border hover:border-primary/50"
                       )}
                     >
-                      <span className="text-3xl mb-2 block">{type.icon}</span>
+                      <span className="text-3xl mb-2 block">
+                        <img
+                          src={type.icon}
+                          alt={type.name}
+                          className="w-10 h-10 object-contain"
+                        />
+                      </span>
                       <span className="font-semibold text-foreground">{type.name}</span>
                     </button>
                   ))}
@@ -322,21 +344,31 @@ export default function CustomizePage() {
                   </label>
                   <div className="flex items-center gap-4">
                     <button
-                      onClick={() => setTravelerCount(Math.max(1, travelerCount - 1))}
-                      className="w-12 h-12 rounded-xl bg-muted flex items-center justify-center hover:bg-muted/80"
+                      onClick={() =>
+                        setTravelerCount((prev) => Math.max(1, prev - 1))
+                      }
+                      disabled={travelerCount === 1}
+                      className="w-12 h-12 rounded-xl bg-muted flex items-center justify-center hover:bg-muted/80 disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       <Minus className="w-5 h-5" />
                     </button>
+
                     <span className="text-3xl font-bold text-foreground w-16 text-center">
                       {travelerCount}
                     </span>
+
                     <button
-                      onClick={() => setTravelerCount(travelerCount + 1)}
-                      className="w-12 h-12 rounded-xl bg-muted flex items-center justify-center hover:bg-muted/80"
+                      onClick={() =>
+                        setTravelerCount((prev) => Math.min(20, prev + 1))
+                      }
+                      disabled={travelerCount === 20}
+                      className="w-12 h-12 rounded-xl bg-muted flex items-center justify-center hover:bg-muted/80 disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       <Plus className="w-5 h-5" />
                     </button>
                   </div>
+                  `
+
                 </div>
               </motion.div>
             )}
@@ -565,7 +597,7 @@ export default function CustomizePage() {
                 <ArrowLeft className="w-4 h-4 mr-2" />
                 Back
               </Button>
-              
+
               {step < 5 ? (
                 <Button
                   onClick={() => setStep(step + 1)}
@@ -575,10 +607,14 @@ export default function CustomizePage() {
                   <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
               ) : (
-                <Button variant="hero">
+                <Button
+                  variant="hero"
+                  onClick={() => setIsBookingOpen(true)}
+                >
                   Proceed to Book
                   <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
+
               )}
             </div>
           </div>
@@ -589,7 +625,7 @@ export default function CustomizePage() {
               <h3 className="font-display text-xl font-bold text-foreground mb-4">
                 Price Summary
               </h3>
-              
+
               <div className="space-y-3 mb-6">
                 <div className="flex items-center justify-between text-sm">
                   <span className="text-muted-foreground">Base ({totalDays} days)</span>
@@ -645,6 +681,19 @@ export default function CustomizePage() {
       </div>
 
       <Footer />
+      <BookingModal
+        isOpen={isBookingOpen}
+        onClose={() => setIsBookingOpen(false)}
+        packageData={{
+          destinations: selectedDestinations,
+          travelerType,
+          travelerCount,
+          packageType,
+          mealOption,
+          activities: selectedActivities,
+          totalPrice: pricing.total,
+        }}
+      />
     </div>
   );
 }

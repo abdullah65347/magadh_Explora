@@ -20,6 +20,7 @@ import pawapuriImg from "@/assets/pawapuri.jpg";
 import nalandaImg from "@/assets/nalanda.jpg";
 import kesariyaImg from "@/assets/kesariya.jpg";
 import heroImg from "@/assets/hero-nalanda.jpg";
+import { destinationCover } from "@/assets/assets";
 
 const destinations = [
   {
@@ -212,18 +213,22 @@ export default function Destinations() {
       <Header />
 
       {/* Hero */}
-      <section className="pt-24 pb-12 bg-gradient-warm relative overflow-hidden">
-        <div className="absolute inset-0 pattern-heritage opacity-30" />
+      <section className="pt-24 pb-12 relative overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: `url(${destinationCover})` }}
+        />
         <div className="container mx-auto px-4 relative">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="max-w-3xl mx-auto text-center py-12"
+            transition={{ duration: 0.6 }}
+            className="max-w-3xl mx-auto text-center py-8"
           >
             <h1 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-4">
               Discover Bihar's Treasures
             </h1>
-            <p className="text-muted-foreground text-lg">
+            <p className="text-white text-lg">
               Explore ancient cities, sacred temples, and UNESCO World Heritage Sites
               in the heartland of Buddhism and Jainism
             </p>

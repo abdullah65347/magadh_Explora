@@ -9,31 +9,21 @@ import {
   MapPin,
   Heart
 } from "lucide-react";
+import { MagadhExploraLogo } from "@/assets/assets";
 
 const footerLinks = {
   explore: [
     { name: "All Packages", path: "/packages" },
     { name: "Custom Tours", path: "/customize" },
-    { name: "Destinations", path: "/destinations" },
-    { name: "Special Offers", path: "/offers" },
-  ],
-  religious: [
     { name: "Jain Pilgrimage", path: "/jain-tours" },
     { name: "Buddhist Circuit", path: "/buddhist-tours" },
-    { name: "Temple Tours", path: "/temple-tours" },
-    { name: "Meditation Retreats", path: "/meditation" },
+    { name: "Destinations", path: "/destinations" },
   ],
   company: [
     { name: "About Us", path: "/about" },
     { name: "Our Team", path: "/team" },
     { name: "Blog", path: "/blog" },
     { name: "Careers", path: "/careers" },
-  ],
-  support: [
-    { name: "Contact Us", path: "/contact" },
-    { name: "FAQs", path: "/faqs" },
-    { name: "Terms & Conditions", path: "/terms" },
-    { name: "Privacy Policy", path: "/privacy" },
   ],
 };
 
@@ -53,8 +43,12 @@ export function Footer() {
           {/* Brand Section */}
           <div className="lg:col-span-2">
             <Link to="/" className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 rounded-full bg-gradient-gold flex items-center justify-center">
-                <span className="text-primary-foreground font-display font-bold text-xl">M</span>
+              <div className="w-12 h-12 rounded-full overflow-hidden bg-gradient-gold flex items-center justify-center">
+                <img
+                  src={MagadhExploraLogo}
+                  alt="Magadh Explora Logo"
+                  className="w-full h-full object-cover"
+                />
               </div>
               <div>
                 <h2 className="font-display font-bold text-xl">Magadh Explora</h2>
@@ -100,7 +94,7 @@ export function Footer() {
           </div>
 
           {/* Religious Tours */}
-          <div>
+          {/* <div>
             <h3 className="font-display font-semibold text-lg mb-4">Religious Tours</h3>
             <ul className="space-y-3">
               {footerLinks.religious.map((link) => (
@@ -114,7 +108,7 @@ export function Footer() {
                 </li>
               ))}
             </ul>
-          </div>
+          </div> */}
 
           {/* Company */}
           <div>

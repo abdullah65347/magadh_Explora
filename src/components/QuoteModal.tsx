@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Send, CheckCircle, User, Mail, Phone, Globe, Users, Calendar, Wallet, MessageSquare } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -7,11 +7,12 @@ import { Textarea } from "@/components/ui/textarea";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { useToast } from "@/hooks/use-toast";
 import { cn } from "@/lib/utils";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 interface QuoteModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
-
 const destinationOptions = [
   "Bodh Gaya", "Rajgir", "Nalanda", "Pawapuri", "Vaishali",
   "Kesariya", "Patna", "Gaya", "Vikramshila", "Rohtasgarh"
@@ -23,6 +24,8 @@ export function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const datePickerRef = useRef<DatePicker>(null);
+
 
   const [formData, setFormData] = useState({
     name: "",
@@ -32,7 +35,7 @@ export function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
     travelerType: "",
     packageTier: "",
     destinations: [] as string[],
-    travelDates: "",
+    travelDates: null as Date | null,
     groupSize: "",
     budget: "",
     requirements: "",
@@ -70,7 +73,9 @@ export function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
       travelerType: formData.travelerType,
       packageTier: formData.packageTier,
       destinations: formData.destinations,
-      travelDates: formData.travelDates,
+      travelDates: formData.travelDates
+        ? formData.travelDates.toLocaleDateString("en-CA")
+        : null,
       groupSize: formData.groupSize ? Number(formData.groupSize) : null,
       budget: formData.budget,
       requirements: formData.requirements,
@@ -105,7 +110,7 @@ export function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
           travelerType: "",
           packageTier: "",
           destinations: [],
-          travelDates: "",
+          travelDates: null,
           groupSize: "",
           budget: "",
           requirements: "",
@@ -329,13 +334,32 @@ export function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
                             <Calendar className="w-4 h-4 text-primary" />
                             {t.quote.travelDates}
                           </label>
-                          <Input
-                            value={formData.travelDates}
-                            onChange={(e) =>
-                              setFormData({ ...formData, travelDates: e.target.value })
-                            }
-                            placeholder="March 2025"
-                          />
+                          <div className="relative">
+                            <DatePicker
+                              ref={datePickerRef}
+                              selected={formData.travelDates}
+                              onChange={(date: Date | null) =>
+                                setFormData({ ...formData, travelDates: date })
+                              }
+                              dateFormat="dd MMMM yyyy"
+                              minDate={new Date()}
+                              maxDate={
+                                new Date(
+                                  new Date().setMonth(new Date().getMonth() + 12)
+                                )
+                              }
+                              placeholderText="Select travel date"
+                              calendarClassName="quote-datepicker"
+                              popperClassName="quote-datepicker-popper"
+                              className="w-full h-10 pl-3 pr-10 rounded-md border border-input bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
+                            />
+
+                            {/* Calendar Icon */}
+                            <Calendar
+                              onClick={() => datePickerRef.current?.setOpen(true)}
+                              className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground cursor-pointer"
+                            />
+                          </div>
                         </div>
 
                         <div className="space-y-2">
@@ -346,7 +370,7 @@ export function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
                           <Input
                             type="number"
                             min="1"
-                            max="100"
+                            max="20"
                             value={formData.groupSize}
                             onChange={(e) =>
                               setFormData({ ...formData, groupSize: e.target.value })
