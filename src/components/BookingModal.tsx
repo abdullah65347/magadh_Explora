@@ -52,6 +52,7 @@ export function BookingModal({
     const { toast } = useToast();
 
 
+
     const [editableData, setEditableData] = useState({
         travelerType: "",
         travelerCount: 1,
@@ -59,6 +60,25 @@ export function BookingModal({
         mealOption: "",
         activities: [] as string[],
     });
+
+    const isFixedCount =
+        editableData.travelerType === "solo" ||
+        editableData.travelerType === "couple";
+
+    useEffect(() => {
+        if (editableData.travelerType === "solo") {
+            setEditableData(prev => ({
+                ...prev,
+                travelerCount: 1,
+            }));
+        } else if (editableData.travelerType === "couple") {
+            setEditableData(prev => ({
+                ...prev,
+                travelerCount: 2,
+            }));
+        }
+    }, [editableData.travelerType]);
+
 
     useEffect(() => {
         if (isOpen && packageData) {
@@ -254,10 +274,11 @@ export function BookingModal({
                                                         type="number"
                                                         min="1"
                                                         max="20"
+                                                        disabled={isFixedCount}
                                                         value={editableData.travelerCount}
                                                         onChange={(e) => {
                                                             const value = Number(e.target.value);
-                                                            if (value <= 20) {
+                                                            if (value >= 1 && value <= 20) {
                                                                 setEditableData({
                                                                     ...editableData,
                                                                     travelerCount: value,
@@ -265,6 +286,7 @@ export function BookingModal({
                                                             }
                                                         }}
                                                     />
+
                                                 </div>
                                             </div>
 

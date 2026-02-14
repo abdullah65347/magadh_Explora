@@ -10,7 +10,7 @@ export function DynamicPackageBuilder() {
     const [duration, setDuration] = useState(5);
     const [travelers, setTravelers] = useState(2);
 
-    const basePrice = 8000;
+    const basePrice = 2000;
     const estimatedPrice = basePrice * duration * travelers * 0.85;
 
     return (
@@ -95,7 +95,7 @@ export function DynamicPackageBuilder() {
                     {/* Estimated Price */}
                     <div className="bg-muted/50 rounded-2xl p-6 mb-4 text-center">
                         <p className="text-sm text-muted-foreground mb-1">Estimated Total</p>
-                        <p className="text-4xl font-bold text-primary font-display">
+                        <p className="text-4xl font-bold text-primary font-mono">
                             ₹{Math.round(estimatedPrice).toLocaleString()}
                         </p>
                         <p className="text-xs text-muted-foreground mt-1">

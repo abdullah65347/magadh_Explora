@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Phone, ChevronDown, MessageCircle } from "lucide-react";
@@ -18,6 +18,7 @@ export function Header({ onGetQuote }: HeaderProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const location = useLocation();
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -46,6 +47,26 @@ export function Header({ onGetQuote }: HeaderProps) {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (
+        mobileMenuRef.current &&
+        !mobileMenuRef.current.contains(event.target as Node)
+      ) {
+        setIsMobileMenuOpen(false);
+      }
+    }
+
+    if (isMobileMenuOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isMobileMenuOpen]);
+
 
   useEffect(() => {
     setIsMobileMenuOpen(false);
@@ -165,16 +186,6 @@ export function Header({ onGetQuote }: HeaderProps) {
 
           {/* CTA Buttons */}
           <div className="hidden xl2:flex items-center gap-3">
-            {/* <a
-              href="tel:+919876543210"
-              className={cn(
-                "flex items-center gap-2 text-sm font-medium transition-colors duration-300",
-                isScrolled ? "text-foreground" : "text-primary-foreground/90"
-              )}
-            >
-              <Phone className="w-4 h-4" />
-              <span className="hidden xl:inline">+91 98765 43210</span>
-            </a> */}
             <LanguageSelector variant={isScrolled ? 'default' : 'transparent'} />
             <Button
               variant={isScrolled ? "default" : "hero"}
@@ -208,6 +219,7 @@ export function Header({ onGetQuote }: HeaderProps) {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
+            ref={mobileMenuRef}
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}

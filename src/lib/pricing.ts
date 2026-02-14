@@ -1,4 +1,4 @@
-export const BASE_RATE = 5000;
+export const BASE_RATE = 2000;
 
 export const travelerMultipliers: Record<string, number> = {
     solo: 1.8,
