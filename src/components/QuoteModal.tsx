@@ -9,6 +9,7 @@ import { useToast } from "@/hooks/use-toast";
 import { cn } from "@/lib/utils";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+
 interface QuoteModalProps {
   isOpen: boolean;
   onClose: () => void;
@@ -144,12 +145,13 @@ export function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
           />
 
           {/* Modal - Centered */}
-          <div className="fixed inset-0 flex items-center justify-center p-4 z-50">
+          <div className="fixed inset-0 flex items-center justify-center p-4 z-50" onClick={onClose}>
             <motion.div
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               transition={{ type: "spring", duration: 0.5 }}
+              onClick={(e) => e.stopPropagation()}
               className="w-full max-w-2xl max-h-[90vh] overflow-hidden bg-background rounded-2xl shadow-2xl"
             >
 
@@ -351,8 +353,10 @@ export function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
                               placeholderText="Select travel date"
                               calendarClassName="quote-datepicker"
                               popperClassName="quote-datepicker-popper"
+                              wrapperClassName="w-full"
                               className="w-full h-10 pl-3 pr-10 rounded-md border border-input bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
                             />
+
 
                             {/* Calendar Icon */}
                             <Calendar
