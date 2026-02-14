@@ -354,10 +354,8 @@ export function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
                               calendarClassName="quote-datepicker"
                               popperClassName="quote-datepicker-popper"
                               wrapperClassName="w-full"
-                              className="w-full h-10 pl-3 pr-10 rounded-md border border-input bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
+                              className="w-full h-10 pl-3 pr-10  rounded-md border border-input bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
                             />
-
-
                             {/* Calendar Icon */}
                             <Calendar
                               onClick={() => datePickerRef.current?.setOpen(true)}
