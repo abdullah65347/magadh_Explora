@@ -128,7 +128,7 @@ export default function Destinations() {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-foreground/40 to-transparent" />
           <div className="absolute bottom-0 left-0 right-0 p-8">
-            <div className="container mx-auto">
+            <div className="">
               <span className={cn(
                 "inline-block px-3 py-1 rounded-full text-sm font-semibold mb-4",
                 destination.type === "Buddhist" ? "bg-accent text-accent-foreground" :

@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { calculatePrice } from "@/lib/pricing";
 import { SoloIcon, CoupleIcon, FamilyIcon, SchoolIcon, CollegeIcon, CorporateIcon } from "@/assets/assets";
@@ -90,6 +90,7 @@ export default function CustomizePage() {
   const [mealOption, setMealOption] = useState("none");
   const [selectedActivities, setSelectedActivities] = useState<string[]>([]);
   const [isBookingOpen, setIsBookingOpen] = useState(false);
+  const builderRef = useRef<HTMLDivElement>(null);
 
   const totalDays = selectedDestinations.reduce((acc, d) => acc + d.days, 0);
 
@@ -142,6 +143,20 @@ export default function CustomizePage() {
         : [...prev, actId]
     );
   };
+
+  useEffect(() => {
+    if (builderRef.current) {
+      const headerOffset = 145; // adjust if needed
+      const elementPosition = builderRef.current.getBoundingClientRect().top;
+      const offsetPosition =
+        elementPosition + window.pageYOffset - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+    }
+  }, [step]);
 
   return (
     <div className="min-h-screen bg-background">
@@ -231,7 +246,7 @@ export default function CustomizePage() {
       <div className="container mx-auto px-4 py-12">
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Builder Steps */}
-          <div className="lg:col-span-2">
+          <div ref={builderRef} className="lg:col-span-2">
             {/* Step 1: Destinations */}
             {step === 1 && (
               <motion.div
