@@ -146,7 +146,7 @@ export default function CustomizePage() {
 
   useEffect(() => {
     if (builderRef.current) {
-      const headerOffset = 145; // adjust if needed
+      const headerOffset = 145;
       const elementPosition = builderRef.current.getBoundingClientRect().top;
       const offsetPosition =
         elementPosition + window.pageYOffset - headerOffset;
@@ -157,6 +157,17 @@ export default function CustomizePage() {
       });
     }
   }, [step]);
+
+  useEffect(() => {
+    if (travelerType === "solo") {
+      setTravelerCount(1);
+    } else if (travelerType === "couple") {
+      setTravelerCount(2);
+    }
+  }, [travelerType]);
+
+  const isFixedCount =
+    travelerType === "solo" || travelerType === "couple";
 
   return (
     <div className="min-h-screen bg-background">
@@ -362,7 +373,7 @@ export default function CustomizePage() {
                       onClick={() =>
                         setTravelerCount((prev) => Math.max(1, prev - 1))
                       }
-                      disabled={travelerCount === 1}
+                      disabled={isFixedCount || travelerCount === 1}
                       className="w-12 h-12 rounded-xl bg-muted flex items-center justify-center hover:bg-muted/80 disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       <Minus className="w-5 h-5" />
@@ -376,7 +387,7 @@ export default function CustomizePage() {
                       onClick={() =>
                         setTravelerCount((prev) => Math.min(20, prev + 1))
                       }
-                      disabled={travelerCount === 20}
+                      disabled={isFixedCount || travelerCount === 20}
                       className="w-12 h-12 rounded-xl bg-muted flex items-center justify-center hover:bg-muted/80 disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       <Plus className="w-5 h-5" />
