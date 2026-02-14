@@ -171,8 +171,6 @@ export default function CustomizePage() {
 
   return (
     <div className="min-h-screen bg-background">
-      <Header />
-
       {/* Hero */}
       <section className="pt-24 pb-12 relative overflow-hidden">
         <div

@@ -191,8 +191,6 @@ export default function PackagesPage() {
 
   return (
     <div className="min-h-screen bg-background">
-      <Header />
-
       {/* Hero Section */}
       <section className="pt-24 pb-12 relative overflow-hidden">
         {/* Background Image */}

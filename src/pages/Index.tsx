@@ -18,7 +18,6 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <Header onGetQuote={() => setIsQuoteModalOpen(true)} />
       <main>
         <HeroSection onGetQuote={() => setIsQuoteModalOpen(true)} />
         <PackagesSection />
