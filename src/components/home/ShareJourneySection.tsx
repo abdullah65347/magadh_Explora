@@ -33,10 +33,10 @@ const sampleContent = {
         { id: 3, thumbnail: meditationRajgirImg, user: "Spiritual Journey", title: "Meditation in Rajgir", views: 15200, duration: "3:45" },
     ],
     reels: [
-        { id: 1, thumbnail: "https://images.unsplash.com/photo-1590845947698-8924d7409b56?w=400", user: "@bihartravel", likes: 5600 },
-        { id: 2, thumbnail: "https://images.unsplash.com/photo-1548013146-72479768bada?w=400", user: "@spiritualseeker", likes: 8200 },
-        { id: 3, thumbnail: "https://images.unsplash.com/photo-1598091383021-15ddea10925d?w=400", user: "@wanderlust_in", likes: 4300 },
-        { id: 4, thumbnail: "https://images.unsplash.com/photo-1544015759-237f87627549?w=400", user: "@travelgram", likes: 9100 },
+        { id: 1, thumbnail: sunsetBodhgayaImg, user: "@bihartravel", likes: 5600 },
+        { id: 2, thumbnail: bodhGayaSharedImg, user: "@spiritualseeker", likes: 8200 },
+        { id: 3, thumbnail: rajgir1Img, user: "@wanderlust_in", likes: 4300 },
+        { id: 4, thumbnail: ashokanPillarVaishaliImg, user: "@travelgram", likes: 9100 },
     ],
 };
 

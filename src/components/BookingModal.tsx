@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { calculatePrice } from "@/lib/pricing";
-
+import { useToast } from "@/hooks/use-toast";
 
 interface BookingModalProps {
     isOpen: boolean;
@@ -49,6 +49,8 @@ export function BookingModal({
 }: BookingModalProps) {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSuccess, setIsSuccess] = useState(false);
+    const { toast } = useToast();
+
 
     const [editableData, setEditableData] = useState({
         travelerType: "",
@@ -123,13 +125,23 @@ export function BookingModal({
 
 
         try {
-            await fetch("http://localhost:8081/mail/booking", {
+            const response = await fetch("http://localhost:8081/mail/booking", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(payload),
             });
 
+            if (!response.ok) {
+                throw new Error("Booking failed");
+            }
+
             setIsSuccess(true);
+
+            toast({
+                title: "Success!",
+                description: "Your booking request has been sent successfully.",
+            });
+
             setTimeout(() => {
                 setIsSuccess(false);
                 onClose();
@@ -137,9 +149,17 @@ export function BookingModal({
 
         } catch (err) {
             console.error(err);
+
+            toast({
+                title: "Error",
+                description: "Something went wrong. Please try again.",
+                variant: "destructive",
+            });
+
         } finally {
             setIsSubmitting(false);
         }
+
     };
 
     return (
@@ -154,11 +174,12 @@ export function BookingModal({
                         className="fixed inset-0 bg-foreground/60 backdrop-blur-sm z-50"
                     />
 
-                    <div className="fixed inset-0 flex items-center justify-center p-4 z-50">
+                    <div className="fixed inset-0 flex items-center justify-center p-4 z-50" onClick={onClose}>
                         <motion.div
                             initial={{ opacity: 0, scale: 0.95 }}
                             animate={{ opacity: 1, scale: 1 }}
                             exit={{ opacity: 0, scale: 0.95 }}
+                            onClick={(e) => e.stopPropagation()}
                             className="w-full max-w-2xl max-h-[90vh] overflow-hidden bg-background rounded-2xl shadow-2xl"
                         >
                             {isSuccess ? (
@@ -187,7 +208,7 @@ export function BookingModal({
                                     </div>
 
                                     <div className="max-h-[calc(90vh-88px)] overflow-y-auto">
-                                        <form onSubmit={handleSubmit} className="p-6 space-y-8">
+                                        <form onSubmit={handleSubmit} className="p-6 pb-10 space-y-8">
 
                                             {/* DESTINATIONS */}
                                             <div>
@@ -232,14 +253,17 @@ export function BookingModal({
                                                     <Input
                                                         type="number"
                                                         min="1"
+                                                        max="20"
                                                         value={editableData.travelerCount}
-                                                        onChange={(e) =>
-                                                            setEditableData({
-                                                                ...editableData,
-                                                                travelerCount: Number(e.target.value),
-                                                            })
-                                                        }
-                                                        placeholder="Enter total travelers"
+                                                        onChange={(e) => {
+                                                            const value = Number(e.target.value);
+                                                            if (value <= 20) {
+                                                                setEditableData({
+                                                                    ...editableData,
+                                                                    travelerCount: value,
+                                                                });
+                                                            }
+                                                        }}
                                                     />
                                                 </div>
                                             </div>
