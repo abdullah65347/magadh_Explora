@@ -72,8 +72,6 @@ export default function ContactPage() {
 
   return (
     <div className="min-h-screen bg-background">
-      <Header />
-
       {/* Hero */}
       <section className="pt-24 pb-12 bg-gradient-warm relative overflow-hidden">
         <div

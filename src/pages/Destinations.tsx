@@ -117,8 +117,6 @@ export default function Destinations() {
 
     return (
       <div className="min-h-screen bg-background">
-        <Header />
-
         {/* Hero */}
         <section className="relative h-[60vh] min-h-[400px]">
           <img
