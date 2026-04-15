@@ -12,33 +12,6 @@ interface HeroSectionProps {
 
 export function HeroSection({ onGetQuote }: HeroSectionProps) {
   const { t } = useLanguage();
-  //   {
-  //     image: "/images/hero-bihar.jpg",
-  //     title: "Discover the\nAncient Wonders\nof Bihar",
-  //     subtitle: "3000 years of history, spirituality & adventure await",
-  //   },
-  //   {
-  //     image: "/images/bodh-gaya.jpg",
-  //     title: "Walk the Path\nof Enlightenment",
-  //     subtitle: "Explore sacred Buddhist sites across the Magadh region",
-  //   },
-  //   {
-  //     image: "/images/rajgir.jpg",
-  //     title: "Where Empires\nWere Born",
-  //     subtitle: "Experience the grandeur of the ancient Magadh Empire",
-  //   },
-  // ];
-
-  // const [currentSlide, setCurrentSlide] = useState(0);
-
-  // useEffect(() => {
-  //   const timer = setInterval(() => {
-  //     setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
-  //   }, 6000);
-  //   return () => clearInterval(timer);
-  // }, []);
-
-  // const slide = heroSlides[currentSlide];
 
   const stats = [
     { icon: Star, value: "4.9", label: t.hero.stats.destinations },
